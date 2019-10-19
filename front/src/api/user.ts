@@ -12,4 +12,10 @@ export class UserApi {
   updateChild(child: Child): Observable<Child> {
     return this.http.put<Child>(`children/${child.id}`, { child });
   }
+  getParent(): Observable<Parent> {
+    return this.http.get<Parent>('parents/me');
+  }
+  getChild(): Observable<Child> {
+    return this.http.get<Child>('children/me');
+  }
 }

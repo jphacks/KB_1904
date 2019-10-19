@@ -17,6 +17,7 @@ import { ChildModalPageModule } from './child/child-modal/child-modal.module';
 import { ApisModule } from '../api/apis.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../store';
+import {ServiceModule} from '../service/services.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { reducers } from '../store';
     ChildModalPageModule,
     ApisModule,
     StoreModule.forRoot(reducers),
+    ServiceModule
   ],
   providers: [
     StatusBar,

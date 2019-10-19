@@ -8,6 +8,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./child-item.component.scss'],
 })
 export class ChildItemComponent implements OnInit {
+  @Input() showPeriod = false;
 
   constructor(
     private modalCtrl: ModalController
