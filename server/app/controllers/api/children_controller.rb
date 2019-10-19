@@ -2,7 +2,7 @@
 
 module Api
   class ChildrenController < BaseController
-    before_action :set_child, only: %i[update]
+    before_action :set_child, only: %i[update grant]
 
     def create
       @child = Child.build(child_params)
@@ -21,6 +21,16 @@ module Api
       end
     end
 
+    def grant
+      ActiveRecord::Base.transaction do
+        ::GrantPointService.new(@child).execute!(grant_params)
+      end
+
+      render json: ::Api::ChildSerializer.new(@child)
+    rescue ActiveRecord::RecordInvalid
+      render_errors @child
+    end
+
     private
 
     def set_child
@@ -29,6 +39,10 @@ module Api
 
     def child_params
       params.require(:child).permit(:name, :sex)
+    end
+
+    def grant_params
+      params.require(:child).permit(:point, :description)
     end
   end
 end
