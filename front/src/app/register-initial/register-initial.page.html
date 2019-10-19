@@ -29,7 +29,11 @@
         <ion-label>パスワード(必須)</ion-label>
         <ion-input type="password" formControlName="password" name="password"></ion-input>
       </ion-item>
-      <button ion-button type="submit" class="register-button" block>次へ</button>
+      <div class="form-buttons">
+        <button ion-button type="submit" class="register-button" block>次へ</button>
+        <div class="login-button" (click)="navigateToLoginPage()" tappable>ログインの方はこちら</div>
+      </div>
+
     </form>
   </ng-container>
   <ng-container *ngIf="formNumber === 1">

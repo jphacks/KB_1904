@@ -72,4 +72,7 @@ export class RegisterInitialPage implements OnInit {
       }
     );
   }
+  navigateToLoginPage() {
+    this.router.navigateByUrl('login');
+  }
 }
