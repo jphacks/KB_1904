@@ -6,6 +6,7 @@
   top: 0;
   left: 0;
   object-fit: cover;
+  z-index: -10;
 }
 .background-cover {
   width: 100%;
@@ -14,9 +15,9 @@
   top: 0;
   left: 0;
   object-fit: cover;
-  z-index: 5;
   background: #fff;
   opacity: 0.75;
+  z-index: -5;
 }
 .content {
   width: 100%;
@@ -29,11 +30,38 @@
     width: 100px;
   }
 }
+.register-form {
+  z-index: 0;
+  width: 100%;
+  padding: 0 16px;
+  & > ion-item {
+    --background: transpalent;
+  }
+}
 .attention {
   font-size: 18px;
   line-height: 32px;
   margin-top: 30px;
   text-align: center;
+}
+.attention-to-parent {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.form-index {
+  display: flex;
+  align-items: center;
+  & > div {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: color($parent-colors, light);
+    margin: 16px 8px 8px;
+  }
+  &> .choosed {
+    background: color($parent-colors, primary);
+  }
 }
 .register-button {
   display: flex;
@@ -48,6 +76,9 @@
   background: color($parent-colors, primary);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   color: white;
+  &.secondary {
+    background: color($parent-colors, secondary);
+  }
 }
 .login-button {
   margin-top: 20px;

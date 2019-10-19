@@ -6,10 +6,60 @@
     大人の人にアプリを<br>
     つかえるようにしてもらってね
   </div>
-  <div class="register-button" tappable>
-    新規会員登録
+  <div class="form-index">
+    <div [class.choosed]="formNumber === 0"></div>
+    <div [class.choosed]="formNumber === 1"></div>
+    <div [class.choosed]="formNumber === 2"></div>
   </div>
-  <div class="login-button" tappable>
-    ログインはこちら
-  </div>
+  <ng-container *ngIf="formNumber === 0">
+    <div class="attention-to-parent">
+      入力内容は3段階あります<br>
+      まず，大人の方の情報を入力してください
+    </div>
+    <form [formGroup]="form1" (ngSubmit)="register1(form1, $event)" class="register-form">
+      <ion-item>
+        <ion-label>お名前(必須)</ion-label>
+        <ion-input type="text" formControlName="name" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>メールアドレス(必須)</ion-label>
+        <ion-textarea formControlName="email" name="email"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>パスワード(必須)</ion-label>
+        <ion-input type="password" formControlName="password" name="password"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" class="register-button" block>次へ</button>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="formNumber === 1">
+    <div class="attentioin-to-parent">
+      お子様の情報を入力してください
+    </div>
+    <form [formGroup]="form2" (ngSubmit)="register2(form2, $event)" class="register-form">
+      <ion-item>
+        <ion-label>お名前(必須)</ion-label>
+        <ion-input type="text" formControlName="name" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>性別(必須)</ion-label>
+        <ion-select placeholder="Select One">
+          <ion-select-option value="female">女の子</ion-select-option>
+          <ion-select-option value="male">男の子</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>パスワード(必須)</ion-label>
+          <ion-input type="password" formControlName="password" name="password"></ion-input>
+        </ion-item>
+        <button ion-button type="submit" block class="register-button">次へ</button>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="formNumber === 2">
+      <div class="attentioin-to-parent">
+        最後にこのスマートフォンは誰が持ちますか？
+      </div>
+      <div class="register-button" (click)="register3(true)">大人が持つ</div>
+      <div class="register-button secondary" (click)="register3(false)">子どもが持つ</div>
+    </ng-container>
 </div>
