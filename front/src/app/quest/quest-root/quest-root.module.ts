@@ -13,6 +13,10 @@ const routes: Routes = [
     path: '',
     component: QuestRootPage,
   },
+  {
+    path: ':id',
+    loadChildren: () => import('../quest-detail/quest-detail.module').then(m => m.QuestDetailPageModule),
+  },
 ];
 
 @NgModule({

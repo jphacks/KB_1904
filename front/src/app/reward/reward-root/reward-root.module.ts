@@ -13,6 +13,10 @@ const routes: Routes = [
     path: '',
     component: RewardRootPage,
   },
+  {
+    path: ':id',
+    loadChildren: () => import('../reward-detail/reward-detail.module').then(m => m.RewardDetailPageModule),
+  },
 ];
 
 @NgModule({

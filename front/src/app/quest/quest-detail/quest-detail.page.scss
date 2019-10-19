@@ -1,0 +1,94 @@
+@import "../../../theme/parent";
+.content {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  background: color($parent-colors, dammy);
+}
+.trophy {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 32px 0 10px;
+  & > ion-icon {
+    font-size: 28px;
+    margin-right: 8px;
+    color: color($parent-colors, primary);
+  }
+}
+.trophy-message {
+  font-size: 12px;
+}
+.trophy-datetime {
+  font-size: 8px;
+  line-height: 12px;
+}
+.trophy-buttons {
+  display: flex;
+  align-items: center;
+}
+.trophy-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 32px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  background: color($parent-colors, primary);
+  color: #fff;
+  margin: 0 2px;
+}
+.trophy-button-cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 32px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  border: solid 1px color($parent-colors, secondary);
+  color: color($parent-colors, secondary);
+  margin: 0 10px;
+}
+.title {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 36px;
+  margin-bottom: 5px;
+}
+.info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.info-point {
+  font-size: 12px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  & > img {
+    height: 12px;
+    margin-right: 2px;
+  }
+}
+.info-datetime {
+  font-size: 12px;
+}
+.description {
+  width: 100%;
+  font-size: 16px;
+  line-height: 27px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: solid 1px color($parent-colors, light);
+}
