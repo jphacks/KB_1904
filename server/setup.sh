@@ -9,6 +9,7 @@ fi
 # Setup
 source ./aliases.sh
 build
+rails db:drop
 rails db:create
 
 # Install pgcrypto to generate uuid

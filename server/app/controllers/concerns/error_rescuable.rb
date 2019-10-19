@@ -4,8 +4,6 @@ module ErrorRescuable
   extend ActiveSupport::Concern
 
   included do
-    include ClientErrorHandleable
-
     rescue_from Exception, with: :handle_500 if Rails.env.production? || Rails.env.staging?
 
     rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
@@ -16,6 +14,73 @@ module ErrorRescuable
     rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
     # rescue_from Pundit::NotAuthorizedError, with: :handle_access_denied
     # rescue_from Pagy::OverflowError, with: :pagy_overflow
+  end
+
+  def handle_400(e = nil, error_details: [], link: nil)\
+    handle_error(
+      exception: e,
+      title: 'Bad Request',
+      status: 400,
+      error_details: error_details,
+      link: link
+    )
+  end
+
+  def handle_401(e = nil, error_details: [], link: nil)
+    handle_error(
+      exception: e,
+      title: 'Unauthorized',
+      status: 401,
+      error_details: error_details,
+      link: link
+    )
+  end
+
+  def handle_403(e = nil, error_details: [], link: nil)
+    handle_error(
+      exception: e,
+      title: 'Forbidden',
+      status: 403,
+      error_details: error_details,
+      link: link
+    )
+  end
+
+  def handle_404(e = nil, error_details: [], link: nil)
+    handle_error(
+      exception: e,
+      title: 'Not Found',
+      status: 404,
+      error_details: error_details,
+      link: link
+    )
+  end
+
+  def handle_409(e = nil, error_details: [], link: nil)
+    handle_error(
+      exception: e,
+      title: 'Conflict',
+      status: 409,
+      error_details: error_details,
+      link: link
+    )
+  end
+
+  def handle_500(exception = nil)
+    if self.respond_to?(:current_user_uid) && current_user_uid.present?
+      Raven.user_context(user_id: current_user.id, email: current_user.email)
+    end
+    Raven.capture_exception(exception)
+    logger.error("Rendering 500 with exception: #{exception.message}") if exception
+    logger.error(exception.backtrace.join("\n")) if exception
+
+    render json: {
+      error: {
+        title: 'Exception',
+        detail: 'Internal server error.',
+        status: 500,
+      },
+    }, status: :internal_server_error
   end
 
   def handle_record_not_found
@@ -58,20 +123,17 @@ module ErrorRescuable
     render json: { data: [], included: [] }
   end
 
-  def handle_500(exception = nil)
-    if self.respond_to?(:current_user_uid) && current_user_uid.present?
-      Raven.user_context(user_id: current_user.id, email: current_user.email)
-    end
-    Raven.capture_exception(exception)
-    logger.error("Rendering 500 with exception: #{exception.message}") if exception
-    logger.error(exception.backtrace.join("\n")) if exception
+  private
 
+  def handle_error(exception: nil, title: '', status: 0, error_details: [], link: nil)
+    error_details = exception.backtrace[1..1] if exception.present? && error_details.empty?
     render json: {
       error: {
-        title: 'Exception',
-        detail: 'Internal server error.',
-        status: 500,
-      },
-    }, status: :internal_server_error
+        title: title,
+        status: status,
+        error_details: error_details,
+        link: link
+      }
+    }, status: status
   end
 end

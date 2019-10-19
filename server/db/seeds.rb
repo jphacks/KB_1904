@@ -6,49 +6,51 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-parent = Parent.create!(name: 'お母さん')
+if !Parent.count
+  parent = Parent.create!(name: 'お母さん')
 
-child = Child.create!(parent: parent, name: 'ほげの', sex: :female)
+  child = Child.create!(parent: parent, name: 'ほげの', sex: :female)
 
-multiline_desc = <<EOF
-庭に突如発生した謎の怪物.
-我等の計画を邪魔するものは直ちに排除せよ.
-EOF
+  multiline_desc = <<-EOF
+  庭に突如発生した謎の怪物.
+  我等の計画を邪魔するものは直ちに排除せよ.
+  EOF
 
-Quest.create!(
-  [
-    {
-      parent: parent,
-      child: child,
-      title: '宿題をしよう!',
-      description: 'しような',
-      point: 50
-    },
-    {
-      parent: parent,
-      child: child,
-      title: 'やばいやつを倒して！',
-      description: multiline_desc,
-      point: 1000
-    }
-  ]
-)
+  Quest.create!(
+    [
+      {
+        parent: parent,
+        child: child,
+        title: '宿題をしよう!',
+        description: 'しような',
+        point: 50
+      },
+      {
+        parent: parent,
+        child: child,
+        title: 'やばいやつを倒して！',
+        description: multiline_desc,
+        point: 1000
+      }
+    ]
+  )
 
-Reward.create!(
-  [
-    {
-      parent: parent,
-      child: child,
-      name: '飴ちゃん',
-      description: '甘い',
-      point: 10
-    },
-    {
-      parent: parent,
-      child: child,
-      name: '聖剣エクスカリバー',
-      description: 'It slashes all things.',
-      point: 10000
-    }
-  ]
-)
+  Reward.create!(
+    [
+      {
+        parent: parent,
+        child: child,
+        name: '飴ちゃん',
+        description: '甘い',
+        point: 10
+      },
+      {
+        parent: parent,
+        child: child,
+        name: '聖剣エクスカリバー',
+        description: 'It slashes all things.',
+        point: 10000
+      }
+    ]
+  )
+end

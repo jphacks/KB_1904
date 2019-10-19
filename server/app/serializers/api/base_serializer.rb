@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
-class BaseSerializer < ActiveModel::Serializer
-  attributes :id, :type
+module Api
+  class BaseSerializer
+    include FastJsonapi::ObjectSerializer
 
-  def type
-    object.class.name.underscore.pluralize
+    set_key_transform :camel_lower
+
+    attributes :id
+
+    attribute :type do |object|
+      object.class.name.underscore.pluralize
+    end
   end
 end

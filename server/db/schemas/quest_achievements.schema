@@ -1,4 +1,4 @@
-create_table :quest_achivements, force: :cascade do |t|
+create_table :quest_achievements, force: :cascade do |t|
   t.references :parent
   t.references :child
 
