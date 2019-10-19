@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  match '*path' => 'options_request#preflight', via: :options
-
   devise_for :parents
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
