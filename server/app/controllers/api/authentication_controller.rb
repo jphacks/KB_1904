@@ -29,6 +29,18 @@ module Api
       render json: { errors: ['Not implemented yet!!'] }
     end
 
+    def add_device
+      return unless params[:token]
+
+      if params[:is_parent]
+        AddDeviceService.new.execute!(current_parent, token)
+        render json: ::ParentSerializer.new(current_parent)
+      else
+        AddDeviceService.new.execute!(current_child, token)
+        render json: ::ParentSerializer.new(current_child)
+      end
+    end
+
     private
 
     # dark code.

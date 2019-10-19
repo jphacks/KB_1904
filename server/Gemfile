@@ -35,8 +35,11 @@ gem 'turbolinks', '~> 5'
 gem 'bcrypt', '~> 3.1.7'
 
 # use AWS S3
-gem 'aws-sdk'
-gem 'aws-sdk-s3'
+# gem 'aws-sdk', require: false
+# gem 'aws-sdk-s3'
+gem 'rest-client'
+gem 'andpush'
+gem 'sidekiq'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

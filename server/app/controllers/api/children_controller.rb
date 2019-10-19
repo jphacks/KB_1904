@@ -46,7 +46,7 @@ module Api
     end
 
     def grant_params
-      params.require(:child).permit(:point, :description)
+      params.require(:point_grant).permit(:point, :description)
     end
 
     def former_path_pattern

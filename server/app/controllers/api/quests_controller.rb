@@ -17,6 +17,11 @@ module Api
       @quest = Quest.new(create_params)
 
       if @quest.save
+        payload = {
+          title: '新しいクエストが追加されました!',
+          body: 'hogefuga'
+        }
+        ::PushNotificationWorker.perform_async(current_child.device_token, payload)
         render json: ::QuestSerializer.new(@quest)
       else
         render_errors @quest

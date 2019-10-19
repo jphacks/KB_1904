@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post '/register', to: 'authentication#register', as: :register
     post '/login', to: 'authentication#login', as: :login
     delete '/logout', to: 'authentication#logout', as: :logout
+    post '/add_device', to: 'authentication#add_device', as: :add_device
 
     resources :parents, only: :update do
       get 'me', on: :collection
