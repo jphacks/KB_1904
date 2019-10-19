@@ -5,7 +5,7 @@ import { Quest } from 'src/models/quest';
 
 @Injectable()
 export class QuestApi {
-  url = 'quest';
+  url = 'quests';
   constructor(private http: HttpClient) {}
 
   index(): Observable<Quest[]> {

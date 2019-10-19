@@ -5,7 +5,7 @@ import { Reward } from 'src/models';
 
 @Injectable()
 export class RewardApi {
-  url = 'reward';
+  url = 'rewards';
   constructor(private http: HttpClient) {}
 
   index(): Observable<Reward[]> {
