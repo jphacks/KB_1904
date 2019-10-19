@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quest-root',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quest-root.page.scss'],
 })
 export class QuestRootPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+  navigateToDetail() {
+    this.router.navigateByUrl(`tabs/quest/${1}`);
+  }
 }
