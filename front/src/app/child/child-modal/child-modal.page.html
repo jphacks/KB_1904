@@ -1,20 +1,28 @@
-<ion-header>
+<ion-header class="child-modal-header black-font">
   タイトル❤️
 </ion-header>
 
-<ion-content>
-  <div>
-
-  </div>
-  <div class="child-modal-message black-font">
-    このクエストをできれば
-    <div>
-      <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
-      {{'800'}}
+<ion-content [scrollY]="false" class="child-modal-content">
+  <div class="child-modal-quest">
+    <div class="child-modal-image">
+      <img src="../../../assets/icon/bulletin_board.svg"/>
     </div>
-    ゲット！
+    <div class="child-modal-quest-content">
+      <div>ほげホゲホゲホゲホゲホゲホゲ</div>
+      <div class="child-modal-quest-period">10月8日まで</div>
+    </div>
   </div>
-  <ion-button class="child-modal-button">
-    できたらここをタップ！
-  </ion-button>
+  <div class="child-modal-message-wrapper">
+    <div class="child-modal-message black-font">
+      このクエストをできれば
+      <div class="point-wrapper">
+        <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
+        {{'800'}}
+      </div>
+      ゲット！
+    </div>
+    <ion-button class="child-modal-button black-font">
+      できたらここをタップ！
+    </ion-button>
+  </div>
 </ion-content>

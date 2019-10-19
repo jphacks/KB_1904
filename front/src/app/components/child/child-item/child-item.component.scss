@@ -7,7 +7,9 @@
   height: 88px;
   background: color($app-colors, gray, light);
   .child-item-image {
-    --size: 88px;
+    display: flex;
+    align-items: center;
+    height: 88px;
     margin-right: 8px;
   }
   .child-item-card-content-wrapper {

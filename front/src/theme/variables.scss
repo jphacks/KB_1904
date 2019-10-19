@@ -78,5 +78,8 @@
 }
 
 .child-modal {
-  --height: 50% !important;
+  --height: 224px !important;
+  --width: 80% !important;
+  --border-radius: 4px !important;
+  --background: color($app-colors, gray, light) !important;
 }
