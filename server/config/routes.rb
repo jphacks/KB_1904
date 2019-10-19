@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :api do
-    post '/register', to: 'parents#create', as: :register
+    post '/register', to: 'authentication#register', as: :register
     post '/login', to: 'authentication#login', as: :login
     delete '/logout', to: 'authentication#logout', as: :logout
 
