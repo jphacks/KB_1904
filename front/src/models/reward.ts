@@ -4,4 +4,5 @@ export interface Reward {
   description: string;
   point: number;
   status: 'none' | 'finished' | 'approved';
+  createdAt: Date;
 }

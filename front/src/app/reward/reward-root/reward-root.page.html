@@ -15,19 +15,17 @@
       おねだりされているごほうび
     </div>
     <div class="reward-cards">
-      <reward-card (click)="navigateToDetail()"></reward-card>
-      <reward-card (click)="navigateToDetail()"></reward-card>
-      <reward-card (click)="navigateToDetail()"></reward-card>
-      <reward-card (click)="navigateToDetail()"></reward-card>
+      <ng-container *ngIf="(requestedRewards$ | async) as rewards">
+        <reward-card (click)="navigateToDetail(reward.id)" [reward]="reward" *ngFor="let reward of rewards"></reward-card>
+      </ng-container>
     </div>
   <div class="section">
     その他のごほうび
   </div>
   <div class="reward-cards">
-    <reward-card></reward-card>
-    <reward-card></reward-card>
-    <reward-card></reward-card>
-    <reward-card></reward-card>
+    <ng-container *ngIf="(otherRewards$ | async) as rewards">
+      <reward-card (click)="navigateToDetail(reward.id)" [reward]="reward" *ngFor="let reward of rewards"></reward-card>
+    </ng-container>
   </div>
   </div>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
