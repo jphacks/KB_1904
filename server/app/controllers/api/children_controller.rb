@@ -2,6 +2,8 @@
 
 module Api
   class ChildrenController < BaseController
+    include ImageUploadable
+
     before_action :set_child, only: %i[update grant]
 
     def create

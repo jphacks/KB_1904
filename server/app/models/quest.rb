@@ -2,6 +2,7 @@
 
 class Quest < ApplicationRecord
   extend Enumerize
+  include ImageAttachable
 
   belongs_to :parent
   belongs_to :child
