@@ -2,6 +2,8 @@
 
 module Api
   class ParentsController < BaseController
+    include ImageUploadable
+
     before_action :set_parent, only: %i[update]
 
     def update

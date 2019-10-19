@@ -2,6 +2,8 @@
 
 module Api
   class QuestsController < BaseController
+    include ImageUploadable
+
     before_action :set_quest, only: %i[show update destroy approve]
 
     def index
@@ -76,6 +78,10 @@ module Api
         child: child,
         parent: child.parent
       )
+    end
+
+    def former_path_pattern
+      %w[uploaded images quests]
     end
   end
 end

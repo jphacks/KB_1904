@@ -2,6 +2,8 @@
 
 module Api
   class RewardsController < BaseController
+    include ImageUploadable
+
     before_action :set_reward, only: %i[show update destroy approve]
 
     def index
@@ -78,6 +80,10 @@ module Api
         parent: current_parent,
         child: current_parent
       )
+    end
+
+    def former_path_pattern
+      %w[uploaded images rewards]
     end
   end
 end

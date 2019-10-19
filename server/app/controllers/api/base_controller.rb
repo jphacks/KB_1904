@@ -39,7 +39,7 @@ module Api
     end
 
     def user_id_in_token?
-      http_token && auth_token && auth_token[:user_id].to_i
+      http_token && auth_token && auth_token[:parent_id].to_i
     end
   end
 end
