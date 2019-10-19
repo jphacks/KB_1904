@@ -3,7 +3,8 @@ $app-colors: (
   blue: (base: #3B7FFF, light: #90B6FF),
   green: (base: #75B50D, light: #CBE349),
   gray: (base: #E4E4E4, light: #FAFAFA, dark: #B2B2B2),
-  orange: (base: #FAA010, light: #FFF1DB, dark: #FF8E3B)
+  orange: (base: #FAA010, light: #FFF1DB, dark: #FF8E3B),
+  black: (base: #222)
 );
 $quest-kind: (
   emergency: color($app-colors, red, base),
@@ -15,10 +16,12 @@ $parent-colors: (
   background: color($app-colors, gray, light),
   light: color($app-colors, gray, dark),
   danger: color($app-colors, red, base),
-  dammy: color($app-colors, gray, base)
+  dammy: color($app-colors, gray, base),
+  text: color($app-colors, black, base),
 );
 $child-colors: (
   primary: color($app-colors, red, base),
   secondary: color($app-colors, orange, base),
   background: color($app-colors, orange, light),
+  text: color($app-colors, black, base),
 );
