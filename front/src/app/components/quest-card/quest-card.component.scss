@@ -47,4 +47,7 @@ $info-width: 68px;
   font-size: 10px;
   align-items: center;
   color: color($app-colors, primary);
+  & > ion-icon {
+    margin-right: 2px;
+  }
 }
