@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if !Parent.count
+unless Parent.count > 0
   parent = Parent.create!(name: 'お母さん')
 
   child = Child.create!(parent: parent, name: 'ほげの', sex: :female)
