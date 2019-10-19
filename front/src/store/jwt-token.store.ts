@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const SET_TOKEN = '[Jwt Token] SET_TOKEN';
 export const REMOVE_TOKEN = '[Jwt Token] REMOVE_TOKEN';
@@ -19,6 +19,12 @@ export interface State {
 export const initialState = {
   token: localStorage.getItem('jwt-token'),
 };
+
+export const selectFeature = createFeatureSelector<State>('jwtToken');
+export const selectToken = createSelector(
+  selectFeature,
+  s => s.token
+);
 
 export function reducer(state: State = initialState, action: All): State {
   switch (action.type) {
