@@ -13,41 +13,39 @@
   </ion-header>
 
   <ion-content>
-    <div class="content">
-      <div class="thumbnail"></div>
-      <ng-container *ngIf="true">
-        <div class="acqusition">
-          <ion-icon src="assets/icon/acquisition.svg"></ion-icon>
-          <div class="acqusition-text">
-            <div class="acqusition-message">ほげのちゃんがおねだりしています！</div>
-            <div class="acqusition-datetime">2019/10/17 8:00</div>
+    <ng-container *ngIf="(reward$ | async) as reward">
+
+      <div class="content">
+        <div class="thumbnail"></div>
+        <ng-container *ngIf="true">
+          <div class="acqusition">
+            <ion-icon src="assets/icon/acquisition.svg"></ion-icon>
+            <div class="acqusition-text">
+              <div class="acqusition-message">ほげのちゃんがおねだりしています！</div>
+              <div class="acqusition-datetime">{{ reward.createdAt }}</div>
+            </div>
+          </div>
+          <div class="acqusition-button" tappable (click)="approve">
+            確認！
+          </div>
+        </ng-container>
+        <div class="title">
+          {{ reward.name }}
+        </div>
+        <div class="info">
+          <div class="info-point">
+            <img src="assets/icon/jewel.svg">
+            {{ reward.point }}必要
           </div>
         </div>
-        <div class="acqusition-button" tappable>
-          確認！
-        </div>
-      </ng-container>
-      <div class="title">
-        Switch
-      </div>
-      <div class="info">
-        <div class="info-point">
-          <img src="assets/icon/jewel.svg">
-          800必要
+        <div class="description">
+          {{ reward.description }}
         </div>
       </div>
-      <div class="description">
-        説明とかホゲホゲ
-        説明とかホゲホゲ
-        説明とかホゲホゲ
-        説明とかホゲホゲ
-        説明とかホゲホゲ
-        説明とかホゲホゲ
-      </div>
-    </div>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="md-create"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="md-create"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ng-container>
   </ion-content>
