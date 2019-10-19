@@ -12,8 +12,13 @@ Rails.application.routes.draw do
     resources :rewards do
       put 'approve', on: :member
     end
-    resources :quest_achivements, only: :index
+    resources :quest_achievements, only: :index
     resources :reward_acquisitions, only: :index
     resources :point_grants, only: :index
+  end
+
+  namespace :alexa do
+    get 'quests', to: 'quests#index'
+    get 'rewards', to: 'rewards#index'
   end
 end

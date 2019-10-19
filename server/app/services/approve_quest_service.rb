@@ -1,19 +1,11 @@
 # frozen_string_literal: true
 
 class ApproveQuestService
-  attr_accessor :quest, :parent, :child
-
-  def initialize(quest)
-    @quest = quest
-    @parent = quest.parent
-    @child = quest.child
-  end
-
-  def execute!
+  def execute!(quest)
     return false unless quest.status.finished?
 
-    AddPointService.new(child).execute!(quest.point)
-    quest.update!(status: :approved)
+    parent = quest.parent
+    child = quest.child
 
     QuestAchievement.create!(
       parent: parent,
@@ -22,5 +14,8 @@ class ApproveQuestService
       title: quest.title,
       point: quest.point
     )
+
+    quest.update!(status: :approved)
+    child.update!(point: child.point + quest.point)
   end
 end

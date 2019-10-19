@@ -16,7 +16,7 @@ module ErrorRescuable
     # rescue_from Pagy::OverflowError, with: :pagy_overflow
   end
 
-  def handle_400(e = nil, error_details: [], link: nil)\
+  def handle_400(e = nil, error_details: [], link: nil)
     handle_error(
       exception: e,
       title: 'Bad Request',

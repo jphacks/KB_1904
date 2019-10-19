@@ -6,17 +6,17 @@ module Api
 
     def index
       @quests = Quest.all
-      render json: ::Api::QuestSerializer.new(@quests)
+      render json: ::QuestSerializer.new(@quests)
     end
 
     def show
-      render json: ::Api::QuestSerializer.new(@quest)
+      render json: ::QuestSerializer.new(@quest)
     end
 
     def create
       @quest = Quest.build(quest_params)
       if @quest.save
-        render json: ::Api::QuestSerializer.new(@quest)
+        render json: ::QuestSerializer.new(@quest)
       else
         render_errors @quest
       end
@@ -24,7 +24,7 @@ module Api
 
     def update
       if @quest.update(quest_params)
-        render json: ::Api::QuestSerializer.new(@quest)
+        render json: ::QuestSerializer.new(@quest)
       else
         render_errors @quest
       end
@@ -39,12 +39,16 @@ module Api
     end
 
     def approve
-      # TODO: questがfinishedであるときのハンドリング
-      ActiveRecord::Base.transaction do
-        ::ApproveQuestService.new(@quest).execute!
+      unless @quest.status.finished?
+        handle_400(error_details: ['statusがfinishedではありません'])
+        return
       end
 
-      render json: ::Api::QuestSerializer.new(@quest)
+      ActiveRecord::Base.transaction do
+        ::ApproveQuestService.new.execute!(@quest)
+      end
+
+      render json: ::QuestSerializer.new(@quest)
     rescue ActiveRecord::RecordInvalid
       render_errors @quest
     end
