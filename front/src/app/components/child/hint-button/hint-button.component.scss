@@ -1,0 +1,9 @@
+.hint-button {
+  $size: 96px;
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+  background: orange;
+  filter: drop-shadow(-4px 4px 2px gray);
+  text-align: center;
+}

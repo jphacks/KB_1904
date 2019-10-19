@@ -1,0 +1,55 @@
+@import '../../theme/child';
+
+.child-page-content {
+  .status-wrapper {
+    height: auto;
+    width: auto;
+    margin: 12vw 40vw 12vw 16vw;
+    font-size: 20px;
+    .child-name, .child-point {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid color($app-colors, gray, dark);
+      margin-bottom: 16px;
+    }
+    .child-point {
+      * {
+        margin-right: 8px;
+      }
+      .point-text {
+        font-size: 12px;
+      }
+    }
+  }
+  .cards-wrapper {
+    margin: 0 16vw;
+    .card-wrapper {
+      margin: 0;
+      border-radius: 4px;
+      & + .card-wrapper {
+        margin: 8vh 0;
+      }
+      .card-title {
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: color($app-colors, gray, light);
+        &.quest-cards {
+          background: color($child-colors, primary);
+        }
+        &.reward-cards {
+          background: color($child-colors, secondary);
+        }
+      }
+      .card-content {
+        height: 140px;
+        background: color($app-colors, gray, light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
