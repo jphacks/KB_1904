@@ -39,9 +39,13 @@ module Api
     end
 
     def approve
-      # TODO: questがfinishedであるときのハンドリング
+      unless @quest.status.finished?
+        handle_400(error_details: ['statusがfinishedではありません'])
+        return
+      end
+
       ActiveRecord::Base.transaction do
-        ::ApproveQuestService.new(@quest).execute!
+        ::ApproveQuestService.new.execute!(@quest)
       end
 
       render json: ::Api::QuestSerializer.new(@quest)
