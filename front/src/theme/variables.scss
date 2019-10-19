@@ -77,3 +77,9 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
+.child-modal {
+  --height: 224px !important;
+  --width: 80% !important;
+  --border-radius: 4px !important;
+  --background: color($app-colors, gray, light) !important;
+}

@@ -12,14 +12,20 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from '../http-interceptors';
 
+import { ChildModalPage } from './child/child-modal/child-modal.page';
+import { ChildModalPageModule } from './child/child-modal/child-modal.module';
+
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [
+    ChildModalPage
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ChildModalPageModule
   ],
   providers: [
     StatusBar,

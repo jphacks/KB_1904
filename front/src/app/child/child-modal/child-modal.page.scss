@@ -1,0 +1,58 @@
+@import '../../../theme/child';
+
+.child-modal-header {
+  background: color($child-colors, primary);
+  color: color($app-colors, gray, light);
+  height: 48px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.child-modal-content {
+  --background: #{color($app-colors, gray, light)} !important;
+  overflow-y: hidden !important;
+  .child-modal-quest {
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+    height: 88px;
+    background: color($app-colors, gray, light);
+    .child-modal-image {
+      display: flex;
+      align-items: center;
+      width: 80px;
+      margin-right: 8px;
+    }
+    .child-modal-quest-content {
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 8px 0;
+    }
+  }
+  .child-modal-message-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .child-modal-message {
+      display: flex;
+      font-size: 12px;
+      .point-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 8px;
+        .point-jewel-image {
+          margin-right: 4px;
+        }
+      }
+    }
+    .child-modal-button {
+      color: color($app-colors, gray, light);
+      height: 32px;
+      --border-radius: 16px;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import { RewardCardComponent } from './parent/reward-card/reward-card.component'
 import { ButtonWrapperComponent } from './child/button-wrapper/button-wrapper.component';
 import { BackButtonComponent } from './child/back-button/back-button.component';
 import { HintButtonComponent } from './child/hint-button/hint-button.component';
+import { ChildItemComponent } from './child/child-item/child-item.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HintButtonComponent } from './child/hint-button/hint-button.component';
     ButtonWrapperComponent,
     BackButtonComponent,
     HintButtonComponent,
+    ChildItemComponent,
   ],
   imports: [IonicModule, CommonModule],
   exports: [
@@ -27,6 +29,7 @@ import { HintButtonComponent } from './child/hint-button/hint-button.component';
     ButtonWrapperComponent,
     BackButtonComponent,
     HintButtonComponent,
+    ChildItemComponent,
   ],
 })
 export class ComponentsModule {}

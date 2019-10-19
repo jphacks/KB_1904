@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChildModalPage } from '../child-modal/child-modal.page';
 
 @Component({
   selector: 'app-child-detail',
@@ -11,5 +12,4 @@ export class ChildDetailPage implements OnInit {
 
   ngOnInit() {
   }
-
 }

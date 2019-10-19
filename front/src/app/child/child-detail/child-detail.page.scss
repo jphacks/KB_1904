@@ -1,0 +1,44 @@
+@import '../../../theme/child';
+
+.child-detail-page-content {
+  .status-wrapper {
+    height: auto;
+    width: auto;
+    font-size: 12px;
+    display: flex;
+    margin: 16px 20px;
+    .child-name, .child-point {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid color($app-colors, gray, dark);
+      width: 100px;
+      margin-right: 20px;
+    }
+
+    .child-point {
+      .point-jewel-image {
+        margin-right: 8px;
+      }
+    }
+  }
+  .content-title-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 24px;
+    .content-title-image {
+      margin: 16px 0;
+    }
+    .content-title {
+      font-size: 20px;
+    }
+  }
+  .emergency-list, .daily-list, .reward-list, .yet-reward-list {
+    margin: 8px 16px 0 16px;
+  }
+  .emergency-title, .daily-title, .reward-title, .yet-reward-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: color($child-colors, primary);
+  }
+}
