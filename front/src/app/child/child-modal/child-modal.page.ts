@@ -20,7 +20,7 @@ export class ChildModalPage implements OnInit {
     this.authSvc.register(
       {
         name: 'nyan',
-        email: 'hoge@sfasdfasdf.com',
+        email: 'hoge@hoge.com',
       } as any,
       {
         name: 'hoge',
