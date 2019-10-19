@@ -1,0 +1,13 @@
+.content {
+  padding: 24px 16px;
+}
+.section {
+  font-size: 16px;
+  font-weight: bold;
+}
+.quest-cards {
+  margin-top: 20px;
+  & > quest-card {
+    margin-top: 16px;
+  }
+}

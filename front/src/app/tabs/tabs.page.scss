@@ -1,0 +1,4 @@
+@import "../../theme/theme";
+ion-tab-button {
+  --color-selected: #{color($app-colors, primary)};
+}

@@ -1,0 +1,19 @@
+// Map deep get
+
+@function color($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key)
+  }
+  @return $map;
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+@mixin content-shadow($type: default) {
+  box-shadow: if($type == thin, map-get($shadow, thin), map-get($shadow, default));
+}

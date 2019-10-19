@@ -1,0 +1,50 @@
+@import "../../../theme/theme";
+$thumbnail-width: 64px;
+$info-width: 68px;
+:host {
+  width: 100%;
+  padding: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  display: flex;
+  align-items: center;
+}
+.thumbnail {
+  width: $thumbnail-width;
+  height: $thumbnail-width;
+  background: color($app-colors, light);
+  margin-right: 16px;
+}
+.content {
+  flex-grow: 1;
+}
+.content-title {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 26px;
+}
+.content-point {
+  font-size: 12px;
+  line-height: 20px;
+}
+.content-point-jewel {
+  height: 12px;
+}
+.content-status {
+  border: solid 1px;
+  height: 16px;
+  width: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  &.emergency {
+    border-color: color($app-colors, primary);
+    color: color($app-colors, primary);
+  }
+}
+.info {
+  display: flex;
+  font-size: 10px;
+  align-items: center;
+  color: color($app-colors, primary);
+}
