@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { ComponentsModule } from '../components/components.module';
 import { ChildPage } from './child.page';
-import { ChildDetailPage } from './child-detail/child-detail.page';
 
 const routes: Routes = [
   {
@@ -16,16 +15,32 @@ const routes: Routes = [
   },
   {
     path: 'quest',
-    component: ChildDetailPage
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./child-detail/child-detail.module').then(m => m.ChildDetailPageModule),
+      },
+    ],
   },
   {
     path: 'reward',
-    component: ChildDetailPage
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./child-detail/child-detail.module').then(m => m.ChildDetailPageModule),
+      },
+    ],
   },
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, RouterModule.forChild(routes), ComponentsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    RouterModule.forChild(routes),
+    ComponentsModule,
+  ],
   declarations: [ChildPage],
 })
 export class ChildPageModule {}
