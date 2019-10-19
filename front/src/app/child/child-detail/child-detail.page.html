@@ -1,3 +1,62 @@
-<ion-content>
+<ion-content class="child-detail-page-content">
+  <app-button-wrapper></app-button-wrapper>
+  <div class="status-wrapper black-font">
+    <div class="child-name">ほげのちゃん</div>
+    <div class="child-point">
+      <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
+      <div class="point-score">800</div>
+      <div class="point-text">ポイント</div>
+    </div>
+  </div>
+  <div class="content-title-wrapper">
+    <img class="content-title-image" src="../../../assets/icon/bulletin_board.svg" height="80px" />
+    <div class="content-title black-font">どんなクエストがあるか見てみよう！</div>
+  </div>
+  <ng-container class="list-wrapper" *ngIf="true; else rewardList">
+    <div class="emergency-list">
+      <div class="emergency-title black-font">おいそぎクエスト</div>
+      <ion-list class="quest-list">
+        <ion-card class="quest-card">
+          <ion-thumbnail class="quest-image">
+            <img src="../../../assets/icon/bulletin_board.svg"/>
+          </ion-thumbnail>
+          <div class="quest-card-content-wrapper">
+            <ion-card-title class="quest-card-title">nyan</ion-card-title>
+            <ion-card-content class="quest-card-content">hogehogssssssssssss</ion-card-content>
+            <div class="quest-card-status-wrapper">
+              <div class="quest-card-status">10月2日まで</div>
+              <div class="quest-card-status black-font">
+                <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
+                <div class="point-score">800</div>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+    <div class="daily-list">
+      <div class="daily-title black-font">まいにちクエスト</div>
+      <ion-list class="quest-list">
+        <ion-card class="quest-card">
+          <ion-thumbnail class="quest-image">
+            <img src="../../../assets/icon/bulletin_board.svg"/>
+          </ion-thumbnail>
+          <div class="quest-card-content-wrapper">
+            <ion-card-title class="quest-card-title">nyan</ion-card-title>
+            <ion-card-content class="quest-card-content">hogehogssssssssssss</ion-card-content>
+            <div class="quest-card-status-wrapper">
+              <div class="quest-card-status">10月2日まで</div>
+              <div class="quest-card-status black-font">
+                <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
+                <div class="point-score">800</div>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+  </ng-container>
+  <ng-template #rewardList>
 
+  </ng-template>
 </ion-content>
