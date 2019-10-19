@@ -19,13 +19,13 @@ module Api
 
     def authenticate_request!
       unless user_id_in_token?
-        render json: { errors: ['Not Authenticated'] }, status: :unauthorized
+        handle_403(error_details: ['ログインしてください'])
         return
       end
       @current_parent = Parent.find(auth_token[:parent_id])
       @current_child = @current_parent.child
     rescue JWT::VerificationError, JWT::DecodeError
-      render json: { errors: ['Not Authenticated'] }, status: :unauthorized
+      handle_403(error_details: ['ログインしてください'])
     end
 
     def http_token
