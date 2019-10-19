@@ -10,6 +10,7 @@ import { AppState } from 'src/store';
 import { Store } from '@ngrx/store';
 import { selectToken } from 'src/store/jwt-token.store';
 import { logging } from 'protractor';
+import { AuthService } from 'src/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ export class AppComponent {
     private zone: NgZone,
     private router: Router,
     private localStrage: Storage,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private authSvc: AuthService
   ) {
     this.initializeApp();
   }
@@ -44,16 +46,11 @@ export class AppComponent {
       message: 'Loading...',
     });
     loading.present();
-    this.store
-      .select(state => selectToken(state))
-      .subscribe(
-        () => {
-          this.router.navigateByUrl('');
-        },
-        _ => {
-          this.pushRegisterInitialPage();
-        }
-      );
+    if (!this.authSvc.exist()) {
+      this.router.navigateByUrl('');
+    } else {
+      this.pushRegisterInitialPage();
+    }
     loading.dismiss();
   }
   private pushRegisterInitialPage() {

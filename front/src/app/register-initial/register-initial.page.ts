@@ -61,12 +61,12 @@ export class RegisterInitialPage implements OnInit {
     this.authSvc.register(this.parent, this.child, this.password).subscribe(
       _ => {
         if (isParent) {
-          this.router.navigateByUrl('tabs/');
+          this.router.navigateByUrl('');
         } else {
           this.router.navigateByUrl('child/');
         }
       },
-      async _ => {
+      async err => {
         const toast = await this.toastCtrl.create({ message: 'ネットワークエラー', duration: 3000 });
         toast.present();
       }
