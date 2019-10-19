@@ -15,10 +15,7 @@ export interface TokenParam {
 @Injectable()
 export class AuthApi {
   key = 'jwt-token';
-  constructor(
-    private store: Store<AppState>,
-    private http: HttpClient
-  ) {}
+  constructor(private store: Store<AppState>, private http: HttpClient) {}
 
   register(_parent: Parent, _child: Child, _password: string): Observable<string> {
     return this.http

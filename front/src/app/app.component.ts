@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { AppState } from 'src/store';
+import { Store } from '@ngrx/store';
+import { selectToken } from 'src/store/jwt-token.store';
+import { logging } from 'protractor';
+import { AuthService } from 'src/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +18,46 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private platform: Platform, private splashScreen: SplashScreen, private statusBar: StatusBar) {
+  ready$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar,
+    private loadingCtrl: LoadingController,
+    private zone: NgZone,
+    private router: Router,
+    private localStrage: Storage,
+    private store: Store<AppState>,
+    private authSvc: AuthService
+  ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.store.select(state => state);
+      this.initializeRouting();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+  async initializeRouting() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading...',
+    });
+    loading.present();
+    if (!this.authSvc.exist()) {
+      this.router.navigateByUrl('');
+    } else {
+      this.pushRegisterInitialPage();
+    }
+    loading.dismiss();
+  }
+  private pushRegisterInitialPage() {
+    this.zone.run(() => {
+      this.ready$.next(true);
+      this.router.navigateByUrl('register-initial');
+    });
+    this.splashScreen.hide();
   }
 }

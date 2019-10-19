@@ -10,6 +10,8 @@ const routes: Routes = [
     path: 'child',
     loadChildren: () => import('./child/child.module').then(m => m.ChildPageModule),
   },
+  { path: 'register-initial', loadChildren: './register-initial/register-initial.module#RegisterInitialPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],

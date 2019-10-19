@@ -6,20 +6,20 @@ import snakeCase from 'lodash.snakecase';
 import { environment } from '@environment';
 import { EnvironmentInterface } from '../environments/environment.type';
 
-import {AuthService} from '../service';
+import { AuthService } from '../service';
 
 @Injectable()
 export class ApiRequestInterceptor implements HttpInterceptor {
-  constructor(
-    private authSvc: AuthService
-  ) {}
+  constructor(private authSvc: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     let requestUrl;
     let headers: HttpHeaders = req.headers;
     let body = req.body;
     let params = req.params;
-    headers = headers.set('Authorization', this.authSvc.get());
+    if (!!this.authSvc.get()) {
+      headers = headers.set('Authorization', this.authSvc.get());
+    }
     if (this.isInternalApiReq(req.url)) {
       requestUrl = `${this.buildHttpHost(environment)}/api/${req.url}`;
       params = this.toSnakeCaseParams(params);
