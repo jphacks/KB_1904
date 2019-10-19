@@ -6,21 +6,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RewardRootPage } from './reward-root.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: RewardRootPage
-  }
+    component: RewardRootPage,
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [RewardRootPage]
+  imports: [CommonModule, FormsModule, IonicModule, RouterModule.forChild(routes), ComponentsModule],
+  declarations: [RewardRootPage],
 })
 export class RewardRootPageModule {}
