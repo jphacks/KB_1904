@@ -12,7 +12,7 @@
 <ion-content>
   <div class="content">
     <div class="thumbnail"></div>
-    <ng-container>
+    <ng-container *ngIf="true">
       <div class="trophy">
         <ion-icon name="trophy"></ion-icon>
         <div class="trophy-text">
@@ -50,4 +50,9 @@
       説明とかホゲホゲ
     </div>
   </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="md-create"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
