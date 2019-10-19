@@ -1,4 +1,4 @@
-@import "../../../theme/theme";
+@import "../../../../theme/theme";
 :host {
   padding: 8px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
@@ -8,7 +8,7 @@
 .icon {
   width: 28px;
   height: 28px;
-  background-color: color($app-colors, dammy);
+  background-color: color($parent-colors, dammy);
   margin-right: 8px;
 }
 .content-info {

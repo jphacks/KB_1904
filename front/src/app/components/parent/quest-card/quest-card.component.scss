@@ -1,4 +1,4 @@
-@import "../../../theme/theme";
+@import "../../../../theme/theme";
 $thumbnail-width: 64px;
 $info-width: 68px;
 :host {
@@ -11,7 +11,7 @@ $info-width: 68px;
 .thumbnail {
   width: $thumbnail-width;
   height: $thumbnail-width;
-  background: color($app-colors, light);
+  background: color($parent-colors, light);
   margin-right: 16px;
 }
 .content {
@@ -28,25 +28,34 @@ $info-width: 68px;
 }
 .content-point-jewel {
   height: 12px;
+  margin-right: 2px;
 }
 .content-status {
   border: solid 1px;
   height: 16px;
-  width: 56px;
+  width: 88px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 10px;
   &.emergency {
-    border-color: color($app-colors, primary);
-    color: color($app-colors, primary);
+    border-color: color($quest-kind, emergency);
+    color: color($quest-kind, emergency);
+  }
+  &.daily {
+    border-color: color($quest-kind, daily);
+    color: color($quest-kind, daily);
+  }
+  &.weekly {
+    border-color: color($quest-kind, weekly);
+    color: color($quest-kind, weekly);
   }
 }
 .info {
   display: flex;
   font-size: 10px;
   align-items: center;
-  color: color($app-colors, primary);
+  color: color($parent-colors, danger);
   & > ion-icon {
     margin-right: 2px;
   }
