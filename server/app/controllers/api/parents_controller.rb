@@ -4,21 +4,16 @@ module Api
   class ParentsController < BaseController
     before_action :set_parent, only: %i[update]
 
-    def create
-      @parent = Parent.build(parent_params)
-      if @parent.save
-        render json: ::ParentSerializer.new(@parent)
-      else
-        render_errors @parent
-      end
-    end
-
     def update
       if @parent.update(parent_params)
         render json: ::ParentSerializer.new(@parent)
       else
         render_errors @parent
       end
+    end
+
+    def me
+      render json: ::ParentSerializer.new(current_parent)
     end
 
     private
@@ -29,8 +24,15 @@ module Api
 
     def parent_params
       params.require(:parent).permit(
-        :email, :name
+        :name,
+        :email,
+        :password,
+        :password_confirmation
       )
+    end
+
+    def former_path_pattern
+      %w[uploaded images parents]
     end
   end
 end

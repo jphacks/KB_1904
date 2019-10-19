@@ -8,7 +8,11 @@
 
 
 unless Parent.count.positive? && Child.count.positive?
-  parent = Parent.create!(name: 'お母さん')
+  parent = Parent.create!(name: 'お母さん',
+                          email: 'mother@example.com',
+                          password: 'password',
+                          password_confirmation: 'password')
+
   child = Child.create!(parent: parent, name: 'ほげの', sex: :female)
 end
 
@@ -52,14 +56,14 @@ unless Reward.count.positive?
         child: child,
         name: '飴ちゃん',
         description: '甘い',
-        point: 10
+        point: 50
       },
       {
         parent: parent,
         child: child,
         name: '聖剣エクスカリバー',
         description: 'It slashes all things.',
-        point: 10000
+        point: 10_000
       }
     ]
   )
