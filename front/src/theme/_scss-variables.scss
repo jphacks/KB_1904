@@ -2,5 +2,11 @@ $app-colors: (
   primary: #d55b5b,
   background: #fafafa,
   light: #b2b2b2,
+  danger: #d55b5b,
   dammy: #e4e4e4
 );
+$quest-kind: (
+  emergency: #d55b5b,
+  daily: #3B7FFF,
+  weekly: #75B50D,
+)
