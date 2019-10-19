@@ -14,7 +14,7 @@ module Api
     end
 
     def create
-      @reward = Reward.build(reward_params)
+      @reward = Reward.new(create_params)
       if @reward.save
         render json: ::RewardSerializer.new(@reward)
       else
@@ -70,6 +70,14 @@ module Api
         :description,
         :point,
         :status
+      )
+    end
+
+    def create_params
+      child = Child.first
+      reward_params.merge(
+        child: child,
+        parent: child.parent
       )
     end
   end
