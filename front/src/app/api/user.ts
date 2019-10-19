@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class User {
+export class UserApi {
   constructor(private http: HttpClient) {}
   updateParent(parent: Parent): Observable<Parent> {
     return this.http.put<Parent>(`parents/${parent.id}`, { parent });
