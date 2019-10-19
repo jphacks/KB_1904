@@ -13,7 +13,7 @@ export interface TokenParam {
 }
 
 @Injectable()
-export class Auth {
+export class AuthApi {
   key = 'jwt-token';
   constructor(
     private store: Store<AppState>,

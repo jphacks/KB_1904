@@ -14,6 +14,9 @@ import { httpInterceptorProviders } from '../http-interceptors';
 
 import { ChildModalPage } from './child/child-modal/child-modal.page';
 import { ChildModalPageModule } from './child/child-modal/child-modal.module';
+import { ApisModule } from '../api/apis.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +28,9 @@ import { ChildModalPageModule } from './child/child-modal/child-modal.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    ChildModalPageModule
+    ChildModalPageModule,
+    ApisModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [
     StatusBar,
