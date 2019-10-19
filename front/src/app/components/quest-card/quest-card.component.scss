@@ -11,7 +11,7 @@ $info-width: 68px;
 .thumbnail {
   width: $thumbnail-width;
   height: $thumbnail-width;
-  background: color($app-colors, light);
+  background: color($parent-colors, light);
   margin-right: 16px;
 }
 .content {
@@ -28,6 +28,7 @@ $info-width: 68px;
 }
 .content-point-jewel {
   height: 12px;
+  margin-right: 2px;
 }
 .content-status {
   border: solid 1px;
@@ -54,7 +55,7 @@ $info-width: 68px;
   display: flex;
   font-size: 10px;
   align-items: center;
-  color: color($app-colors, danger);
+  color: color($parent-colors, danger);
   & > ion-icon {
     margin-right: 2px;
   }

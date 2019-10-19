@@ -89,7 +89,7 @@ ion-header .header-logo {
 }
 ion-header .header-setting {
   font-size: 36px;
-  color: color($app-colors, light);
+  color: color($parent-colors, light);
 }
 ion-fab-button {
   width: 68px;
