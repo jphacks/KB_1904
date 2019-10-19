@@ -15,7 +15,10 @@ export interface TokenParam {
 @Injectable()
 export class AuthApi {
   key = 'jwt-token';
-  constructor(private store: Store<AppState>, private http: HttpClient) {}
+  constructor(
+    private store: Store<AppState>,
+    private http: HttpClient
+  ) {}
 
   register(_parent: Parent, _child: Child, _password: string): Observable<string> {
     return this.http
@@ -51,8 +54,7 @@ export class AuthApi {
   }
 
   existToken(): boolean {
-    const token = localStorage.getItem(this.key);
-    return token === null;
+    return this.getToken() === null;
   }
 
   private setToken(token: string) {
