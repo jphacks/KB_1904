@@ -1,0 +1,12 @@
+@import './theme';
+
+ion-content {
+  --ion-background-color: #{color($child-colors, background)};
+}
+div {
+  font-family: 'mplus-1c-regular';
+  color: color($child-colors, text);
+}
+.black-font {
+  font-family: 'mplus-1c-black';
+}
