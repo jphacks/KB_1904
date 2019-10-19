@@ -14,7 +14,8 @@ module Api
     end
 
     def create
-      @quest = Quest.build(quest_params)
+      @quest = Quest.new(create_params)
+
       if @quest.save
         render json: ::QuestSerializer.new(@quest)
       else
@@ -66,6 +67,14 @@ module Api
         :point,
         :quest_type,
         :status
+      )
+    end
+
+    def create_params
+      child = Child.first
+      quest_params.merge(
+        child: child,
+        parent: child.parent
       )
     end
   end
