@@ -11,4 +11,7 @@ export class BackButtonComponent implements OnInit {
 
   ngOnInit() {}
 
+  hoge() {
+    console.log('nyan');
+  }
 }

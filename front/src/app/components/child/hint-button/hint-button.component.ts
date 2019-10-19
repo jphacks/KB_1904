@@ -11,4 +11,7 @@ export class HintButtonComponent implements OnInit {
 
   ngOnInit() {}
 
+  hoge() {
+    console.log('nyan');
+  }
 }

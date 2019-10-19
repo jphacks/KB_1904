@@ -1,0 +1,22 @@
+.child-button-wrapper {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  $button-position: -20px;
+  .child-back-button {
+    position: fixed;
+    left: $button-position;
+    bottom: $button-position;
+    pointer-events: auto;
+    margin: 0;
+  }
+  .child-hint-button {
+    position: fixed;
+    right: $button-position;
+    top: $button-position;
+    pointer-events: auto;
+    margin: 0;
+  }
+}
