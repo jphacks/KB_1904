@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthApi } from '../../../api/auth';
-import {Child, Parent} from '../../../models';
+import { AuthApi } from '../../../api';
+import { Child, Parent } from '../../../models';
 
 @Component({
   selector: 'app-child-modal',
