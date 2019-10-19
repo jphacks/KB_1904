@@ -1,16 +1,16 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuestCardComponent } from "./quest-card.component";
+import { QuestCardComponent } from './quest-card.component';
 
-describe("QuestCardComponent", () => {
+describe('QuestCardComponent', () => {
   let component: QuestCardComponent;
   let fixture: ComponentFixture<QuestCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [QuestCardComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 
@@ -20,7 +20,7 @@ describe("QuestCardComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
