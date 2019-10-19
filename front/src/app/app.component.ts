@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 
 import { Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -12,13 +12,19 @@ import { selectToken } from 'src/store/jwt-token.store';
 import { logging } from 'protractor';
 import { AuthService } from 'src/service/auth.service';
 
+import * as firebase from 'firebase';
+import 'firebase/messaging';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   ready$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  messaging = firebase.messaging();
+//   currentMessage = new BehaviorSubject(null);
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -33,6 +39,11 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  ngOnInit() {
+    this.getPermission();
+    this.receiveMessage();
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.store.select(state => state);
@@ -40,7 +51,28 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.messaging.usePublicVapidKey('BLYilK58bHL_wUTL3oYrgPiuGwv-TqvIKY6wOPHbbid1as-eHTAnVVXmM2k_b8UJwsQmqphdnoo5L_MECdYX99k');
   }
+
+  getPermission() {
+    this.messaging
+      .requestPermission()
+      .then(() => {
+        console.log('Notification permission granted.');
+        return this.messaging.getToken();
+      })
+      .catch((err) => {
+        console.log('Unable to get permission to notify.', err);
+      });
+  }
+
+  receiveMessage() {
+    this.messaging.onMessage((payload) => {
+      console.log('Message received. ', payload);
+//       this.currentMessage.next(payload);
+    });
+  }
+
   async initializeRouting() {
     const loading = await this.loadingCtrl.create({
       message: 'Loading...',
@@ -53,6 +85,7 @@ export class AppComponent {
     }
     loading.dismiss();
   }
+
   private pushRegisterInitialPage() {
     this.zone.run(() => {
       this.ready$.next(true);

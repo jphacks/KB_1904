@@ -63,6 +63,7 @@
     "@ngrx/store": "^8.4.0",
     "cordova-ios": "5.0.1",
     "core-js": "^2.5.4",
+    "firebase": "^7.2.1",
     "object-keys-normalizer": "^1.0.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
