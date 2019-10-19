@@ -12,6 +12,10 @@ module Api
       end
     end
 
+    def me
+      render json: ::ParentSerializer.new(current_parent)
+    end
+
     private
 
     def set_parent
@@ -25,6 +29,10 @@ module Api
         :password,
         :password_confirmation
       )
+    end
+
+    def former_path_pattern
+      %w[uploaded images parents]
     end
   end
 end

@@ -31,6 +31,10 @@ module Api
       render_errors @child
     end
 
+    def me
+      render json: ::ChildSerializer.new(current_child)
+    end
+
     private
 
     def set_child
@@ -43,6 +47,10 @@ module Api
 
     def grant_params
       params.require(:child).permit(:point, :description)
+    end
+
+    def former_path_pattern
+      %w[uploaded images children]
     end
   end
 end
