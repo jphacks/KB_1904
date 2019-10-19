@@ -19,7 +19,7 @@ export class QuestApi {
       quest,
     });
   }
-  update(quest: Quest): Observable<Quest> {
+  update(quest: any): Observable<Quest> {
     return this.http.put<Quest>(`${this.url}/${quest.id}`, {
       quest,
     });
@@ -27,7 +27,7 @@ export class QuestApi {
   delete(id: number) {
     this.http.delete(`${this.url}/${id}`);
   }
-  approve(id: number) {
-    this.http.put<Quest>(`${this.url}/${id}/approve`, {});
+  approve(id: number): Observable<Quest> {
+    return this.http.put<Quest>(`${this.url}/${id}/approve`, {});
   }
 }
