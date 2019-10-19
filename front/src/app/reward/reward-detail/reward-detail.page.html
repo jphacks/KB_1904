@@ -1,9 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>reward-detail</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar class="header">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        <img src="assets/imgs/logo.png" class="header-logo" />
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-icon name="settings" class="header-setting"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-
-</ion-content>
+  <ion-content>
+    <div class="content">
+      <div class="thumbnail"></div>
+      <ng-container *ngIf="true">
+        <div class="acqusition">
+          <ion-icon src="assets/icon/acquisition.svg"></ion-icon>
+          <div class="acqusition-text">
+            <div class="acqusition-message">ほげのちゃんがおねだりしています！</div>
+            <div class="acqusition-datetime">2019/10/17 8:00</div>
+          </div>
+        </div>
+        <div class="acqusition-button" tappable>
+          確認！
+        </div>
+      </ng-container>
+      <div class="title">
+        Switch
+      </div>
+      <div class="info">
+        <div class="info-point">
+          <img src="assets/icon/jewel.svg">
+          800必要
+        </div>
+      </div>
+      <div class="description">
+        説明とかホゲホゲ
+        説明とかホゲホゲ
+        説明とかホゲホゲ
+        説明とかホゲホゲ
+        説明とかホゲホゲ
+        説明とかホゲホゲ
+      </div>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="md-create"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>

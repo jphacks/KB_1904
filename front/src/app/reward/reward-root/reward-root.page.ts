@@ -11,6 +11,6 @@ export class RewardRootPage implements OnInit {
 
   ngOnInit() {}
   navigateToDetail() {
-    this.router.navigateByUrl(`tabs/quest/${1}`);
+    this.router.navigateByUrl(`tabs/reward/${1}`);
   }
 }
