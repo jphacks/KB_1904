@@ -1,62 +1,55 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { TabsPage } from "./tabs.page";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: "tabs",
+    path: 'tabs',
     component: TabsPage,
     children: [
       {
-        path: "top",
+        path: 'top',
         children: [
           {
-            path: "",
-            loadChildren: () =>
-              import("../top/top.module").then(m => m.TopPageModule)
-          }
-        ]
+            path: '',
+            loadChildren: () => import('../top/top.module').then(m => m.TopPageModule),
+          },
+        ],
       },
       {
-        path: "quest",
+        path: 'quest',
         children: [
           {
-            path: "",
-            loadChildren: () =>
-              import("../quest/quest-root/quest-root.module").then(
-                m => m.QuestRootPageModule
-              )
-          }
-        ]
+            path: '',
+            loadChildren: () => import('../quest/quest-root/quest-root.module').then(m => m.QuestRootPageModule),
+          },
+        ],
       },
       {
-        path: "reward",
+        path: 'reward',
         children: [
           {
-            path: "",
-            loadChildren: () =>
-              import("../reward/reward-root/reward-root.module").then(
-                m => m.RewardRootPageModule
-              )
-          }
-        ]
+            path: '',
+            loadChildren: () => import('../reward/reward-root/reward-root.module').then(m => m.RewardRootPageModule),
+          },
+        ],
       },
       {
-        path: "",
-        redirectTo: "/tabs/top",
-        pathMatch: "full"
-      }
-    ]
+        path: '',
+        redirectTo: '/tabs/top',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
-    path: "",
-    redirectTo: "/tabs/top",
-    pathMatch: "full"
-  }
+    path: '',
+    redirectTo: '/tabs/top',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TabsPageRoutingModule {}
