@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import { ChildModalPage } from '../child-modal/child-modal.page';
 
 @Component({
@@ -9,22 +8,8 @@ import { ChildModalPage } from '../child-modal/child-modal.page';
 })
 export class ChildDetailPage implements OnInit {
 
-  constructor(
-    private modalCtrl: ModalController
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  async openModal() {
-    console.log('hoge');
-    const modal = await this.modalCtrl.create({
-      component: ChildModalPage,
-      componentProps: { value: 123 },
-      showBackdrop: true,
-      backdropDismiss: true,
-      cssClass: ['child-modal']
-    });
-    await modal.present();
   }
 }

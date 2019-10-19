@@ -1,0 +1,38 @@
+@import '../../../../theme/child';
+
+.child-item-card {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  height: 88px;
+  background: color($app-colors, gray, light);
+  .child-item-image {
+    --size: 88px;
+    margin-right: 8px;
+  }
+  .child-item-card-content-wrapper {
+    .child-item-card-title {
+      font-size: 16px;
+    }
+    .child-item-card-content {
+      font-size: 12px;
+      padding: 2px;
+    }
+    .child-item-card-status-root {
+      width: 100%;
+      padding: 0;
+    }
+    .child-item-card-status-wrapper {
+      display: flex;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      .child-item-card-status {
+        margin: 4px 8px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+      }
+    }
+  }
+}
