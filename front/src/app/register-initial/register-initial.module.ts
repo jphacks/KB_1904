@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RegisterInitialPage } from './register-initial.page';
+import { ServiceModule } from 'src/service/services.module';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, RouterModule.forChild(routes), ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, IonicModule, ServiceModule, RouterModule.forChild(routes), ReactiveFormsModule],
   declarations: [RegisterInitialPage],
 })
 export class RegisterInitialPageModule {}

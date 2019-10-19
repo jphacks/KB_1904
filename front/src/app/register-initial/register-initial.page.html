@@ -43,16 +43,12 @@
       </ion-item>
       <ion-item>
         <ion-label>性別(必須)</ion-label>
-        <ion-select placeholder="Select One">
+        <ion-select formControlName="sex" placeholder="Select One">
           <ion-select-option value="female">女の子</ion-select-option>
           <ion-select-option value="male">男の子</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item>
-          <ion-label>パスワード(必須)</ion-label>
-          <ion-input type="password" formControlName="password" name="password"></ion-input>
-        </ion-item>
-        <button ion-button type="submit" block class="register-button">次へ</button>
+      <button ion-button type="submit" block class="register-button">次へ</button>
     </form>
   </ng-container>
   <ng-container *ngIf="formNumber === 2">

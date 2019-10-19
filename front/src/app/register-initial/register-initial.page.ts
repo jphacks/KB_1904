@@ -3,6 +3,7 @@ import { Parent, Child } from '../../models';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from 'src/service/auth.service';
 
 @Component({
   selector: 'app-register-initial',
@@ -23,22 +24,25 @@ export class RegisterInitialPage implements OnInit {
   form3 = new FormGroup({
     whosePhone: new FormControl('', [Validators.required]),
   });
-  parent: Parent;
-  child: Child;
+  parent: any;
+  child: any;
   password: string;
 
-  constructor(private router: Router, private toastCtrl: ToastController) {}
+  constructor(private router: Router, private toastCtrl: ToastController, private authSvc: AuthService) {}
 
   ngOnInit() {}
 
   async register1(form: FormGroup, event) {
+    console.log('hoge');
     if (form.invalid) {
       const toast = await this.toastCtrl.create({ message: 'フォームの値が無効です', duration: 1500 });
       toast.present();
       return;
     }
-    this.parent.name = form.value.name;
-    this.parent.email = form.value.email;
+    this.parent = {
+      name: form.value.name,
+      email: form.value.email,
+    };
     this.password = form.value.password;
     this.formNumber = 1;
   }
@@ -48,9 +52,25 @@ export class RegisterInitialPage implements OnInit {
       toast.present();
       return;
     }
-    this.child.name = form.value.name;
-    this.child.sex = form.value.sex;
+    this.child = {
+      name: form.value.name,
+      sex: form.value.sex,
+    };
     this.formNumber = 2;
   }
-  register3(isParent: boolean) {}
+  register3(isParent: boolean) {
+    this.authSvc.register(this.parent, this.child, this.password).subscribe(
+      _ => {
+        if (isParent) {
+          this.router.navigateByUrl('tabs/');
+        } else {
+          this.router.navigateByUrl('child/');
+        }
+      },
+      async _ => {
+        const toast = await this.toastCtrl.create({ message: 'ネットワークエラー', duration: 3000 });
+        toast.present();
+      }
+    );
+  }
 }
