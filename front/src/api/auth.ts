@@ -15,29 +15,34 @@ export interface TokenParam {
 @Injectable()
 export class AuthApi {
   key = 'jwt-token';
-  constructor(
-    private store: Store<AppState>,
-    private http: HttpClient,
-  ) {}
+  constructor(private store: Store<AppState>, private http: HttpClient) {}
 
   register(_parent: Parent, _child: Child, _password: string): Observable<string> {
-    return this.http.post('register', {
-      parent: _parent,
-      child: _child,
-      password: _password
-    }).pipe(map((_: TokenParam) => {
-      this.setToken(_.token);
-      return _.token;
-    }));
+    return this.http
+      .post('register', {
+        parent: _parent,
+        child: _child,
+        password: _password,
+      })
+      .pipe(
+        map((_: TokenParam) => {
+          this.setToken(_.token);
+          return _.token;
+        })
+      );
   }
   login(_email: string, _password: string): Observable<string> {
-    return this.http.post('login', {
-      email: _email,
-      password: _password
-    }).pipe(map((_: TokenParam) => {
-      this.setToken(_.token);
-      return _.token;
-    }));
+    return this.http
+      .post('login', {
+        email: _email,
+        password: _password,
+      })
+      .pipe(
+        map((_: TokenParam) => {
+          this.setToken(_.token);
+          return _.token;
+        })
+      );
   }
   getToken(): string | null {
     return localStorage.getItem(this.key);
