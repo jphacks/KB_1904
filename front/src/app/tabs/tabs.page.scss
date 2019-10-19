@@ -1,4 +1,4 @@
-@import "../../theme/theme";
+@import "../../theme/parent";
 ion-tab-button {
   --color-selected: #{color($parent-colors, primary)};
 }
