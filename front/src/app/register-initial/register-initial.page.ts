@@ -33,7 +33,6 @@ export class RegisterInitialPage implements OnInit {
   ngOnInit() {}
 
   async register1(form: FormGroup, event) {
-    console.log('hoge');
     if (form.invalid) {
       const toast = await this.toastCtrl.create({ message: 'フォームの値が無効です', duration: 1500 });
       toast.present();

@@ -17,13 +17,12 @@ import { ChildModalPageModule } from './child/child-modal/child-modal.module';
 import { ApisModule } from '../api/apis.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../store';
-import {ServiceModule} from '../service/services.module';
+import { ServiceModule } from '../service/services.module';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [
-    ChildModalPage
-  ],
+  entryComponents: [ChildModalPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -32,13 +31,14 @@ import {ServiceModule} from '../service/services.module';
     ChildModalPageModule,
     ApisModule,
     StoreModule.forRoot(reducers),
-    ServiceModule
+    ServiceModule,
+    IonicStorageModule.forRoot({ name: 'OutiQuestLocalStorageDb' }),
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    httpInterceptorProviders
+    httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],
 })
