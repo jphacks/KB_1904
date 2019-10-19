@@ -46,6 +46,9 @@
       .card-content {
         height: 140px;
         background: color($app-colors, gray, light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
