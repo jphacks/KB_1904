@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthApi } from '../../../api/auth';
+import {Child, Parent} from '../../../models';
 
 @Component({
   selector: 'app-child-modal',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChildModalPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authSvc: AuthApi
+  ) { }
 
   ngOnInit() {
   }
 
+  hoge() {
+    this.authSvc.register(
+      {
+        name: 'nyan',
+        email: 'hoge@hoge.com',
+      } as Parent,
+      {
+        name: 'hoge',
+        sex: 'male'
+      } as Child,
+      'hogenyan'
+    ).subscribe(_ => {
+      console.log(_);
+    });
+  }
 }
