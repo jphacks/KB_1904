@@ -2,8 +2,6 @@
 
 module Api
   class ParentsController < BaseController
-    include Authenticatable
-
     skip_before_action :authenticate_request!, only: :create
 
     before_action :set_parent, only: %i[update]
@@ -39,5 +37,16 @@ module Api
         :password_confirmation
       )
     end
+  end
+
+  private
+
+  def payload(parent)
+    return nil unless parent&.id
+
+    {
+      auth_token: JsonWebToken.encode({ parent_id: parent.id, exp: (Time.now + 2.week).to_i }),
+      parent: { id: parent.id, email: parent.email }
+    }
   end
 end

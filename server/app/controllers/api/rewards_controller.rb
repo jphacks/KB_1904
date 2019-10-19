@@ -74,10 +74,9 @@ module Api
     end
 
     def create_params
-      child = Child.first
       reward_params.merge(
-        child: child,
-        parent: child.parent
+        parent: current_parent,
+        child: current_parent
       )
     end
   end

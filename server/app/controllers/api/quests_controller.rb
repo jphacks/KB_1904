@@ -5,7 +5,7 @@ module Api
     before_action :set_quest, only: %i[show update destroy approve]
 
     def index
-      @quests = Quest.all
+      @quests = current_child.todays_quests
       render json: ::QuestSerializer.new(@quests)
     end
 

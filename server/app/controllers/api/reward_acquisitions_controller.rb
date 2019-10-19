@@ -3,7 +3,7 @@
 module Api
   class RewardAcquisitionsController < BaseController
     def index
-      @acquisitions = RewardAcquisition.all
+      @acquisitions = current_child.acquisitions.order(created_at: :desc)
       render json: ::RewardAcquisitionSerializer.new(@acquisitions)
     end
   end

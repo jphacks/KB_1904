@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module Api
-  class BaseController < ActionController::API
+  class BaseController < ::ApplicationController
+    protect_from_forgery
+
     include ErrorRescuable
 
     before_action :authenticate_request!
