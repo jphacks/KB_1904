@@ -13,6 +13,7 @@ $quest-kind: (
 );
 $parent-colors: (
   primary: color($app-colors, red, base),
+  secondary: color($app-colors, blue, base),
   background: color($app-colors, gray, light),
   light: color($app-colors, gray, dark),
   danger: color($app-colors, red, base),
