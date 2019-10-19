@@ -9,13 +9,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content scrollY="true">
   <div class="content">
     <div class="section">
       おねだりされているごほうび
     </div>
     <div class="reward-cards">
-
+      <reward-card></reward-card>
+      <reward-card></reward-card>
+      <reward-card></reward-card>
+      <reward-card></reward-card>
     </div>
+  <div class="section">
+    その他のごほうび
   </div>
+  <div class="reward-cards">
+    <reward-card></reward-card>
+    <reward-card></reward-card>
+    <reward-card></reward-card>
+    <reward-card></reward-card>
+  </div>
+  </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon src="assets/icon/add_reward.svg"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

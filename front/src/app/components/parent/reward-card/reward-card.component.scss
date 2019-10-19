@@ -1,0 +1,35 @@
+@import "../../../../theme/parent";
+$card-width: 108px;
+$card-height: 138px;
+$thumbnail-height: calc(#{$card-width} / 1.16);
+$content-height: calc(#{$card-height} - #{$thumbnail-height});
+:host {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+  width: $card-width;
+}
+.thumbnail {
+  width: $card-width;
+  height: $thumbnail-height;
+  background: color($parent-colors, dammy);
+}
+.content {
+  padding: 8px;
+}
+.title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+}
+.point {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+}
+.point-jewel {
+  height: 12px;
+  margin-right: 2px;
+}
+.point-unit {
+  font-size: 8px;
+}
