@@ -4,8 +4,8 @@ export const environment: EnvironmentInterface = {
   name: 'dev',
   production: true,
   api: {
-    host: 'hoge',
-    port: 8000,
-    ssl: true,
+    host: 'localhost',
+    port: 3000,
+    ssl: false,
   },
 };
