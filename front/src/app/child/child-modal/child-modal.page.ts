@@ -20,12 +20,12 @@ export class ChildModalPage implements OnInit {
     this.authSvc.register(
       {
         name: 'nyan',
-        email: 'hoge@hoge.com',
-      } as Parent,
+        email: 'hoge@sfasdfasdf.com',
+      } as any,
       {
         name: 'hoge',
         sex: 'male'
-      } as Child,
+      } as any,
       'hogenyan'
     ).subscribe(_ => {
       console.log(_);
