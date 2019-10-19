@@ -2,12 +2,16 @@
 
 module Api
   class ParentsController < BaseController
+    include Authenticatable
+
+    skip_before_action :authenticate_request!, only: :create
+
     before_action :set_parent, only: %i[update]
 
     def create
-      @parent = Parent.build(parent_params)
+      @parent = Parent.new(parent_params)
       if @parent.save
-        render json: ::ParentSerializer.new(@parent)
+        render json: payload(@parent)
       else
         render_errors @parent
       end
@@ -29,7 +33,10 @@ module Api
 
     def parent_params
       params.require(:parent).permit(
-        :email, :name
+        :name,
+        :email,
+        :password,
+        :password_confirmation
       )
     end
   end

@@ -5,7 +5,7 @@ module Api
     before_action :set_child, only: %i[update grant]
 
     def create
-      @child = Child.build(child_params)
+      @child = Child.new(child_params)
       if @child.save
         render json: ::ChildSerializer.new(@child)
       else

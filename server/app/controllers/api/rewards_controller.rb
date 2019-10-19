@@ -5,7 +5,7 @@ module Api
     before_action :set_reward, only: %i[show update destroy approve]
 
     def index
-      @rewards = Reward.all
+      @rewards = current_parent.rewards
       render json: ::RewardSerializer.new(@rewards)
     end
 

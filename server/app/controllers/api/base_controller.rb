@@ -2,10 +2,16 @@
 
 module Api
   class BaseController < ActionController::API
+    include ErrorRescuable
+
     before_action :authenticate_request!
 
     attr_reader :current_parent
     attr_reader :current_child
+
+    def render_errors(obj)
+      handle_400 error_details: obj.errors.full_messages
+    end
 
     private
 
