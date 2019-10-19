@@ -11,6 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./child/child.module').then(m => m.ChildPageModule),
   },
   { path: 'child-detail', loadChildren: './child-detail/child-detail.module#ChildDetailPageModule' },
+  { path: 'register-initial', loadChildren: './register-initial/register-initial.module#RegisterInitialPageModule' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
