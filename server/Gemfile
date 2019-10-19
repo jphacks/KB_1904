@@ -14,7 +14,9 @@ gem 'redis', '~> 4.0'
 
 # auth
 # gem 'omniauth-twitter'
-gem 'sorcery'
+# gem 'sorcery'
+gem 'devise'
+gem 'jwt'
 
 # serializer
 gem 'fast_jsonapi'
