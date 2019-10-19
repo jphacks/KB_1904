@@ -7,7 +7,7 @@ module Api
     def create
       @parent = Parent.build(parent_params)
       if @parent.save
-        render json: ::Api::ParentSerializer.new(@parent)
+        render json: ::ParentSerializer.new(@parent)
       else
         render_errors @parent
       end
@@ -15,7 +15,7 @@ module Api
 
     def update
       if @parent.update(parent_params)
-        render json: ::Api::ParentSerializer.new(@parent)
+        render json: ::ParentSerializer.new(@parent)
       else
         render_errors @parent
       end

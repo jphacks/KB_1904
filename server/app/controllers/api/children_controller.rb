@@ -7,7 +7,7 @@ module Api
     def create
       @child = Child.build(child_params)
       if @child.save
-        render json: ::Api::ChildSerializer.new(@child)
+        render json: ::ChildSerializer.new(@child)
       else
         render_errors @child
       end
@@ -15,7 +15,7 @@ module Api
 
     def update
       if @child.update(child_params)
-        render json: ::Api::ChildSerializer.new(@child)
+        render json: ::ChildSerializer.new(@child)
       else
         render_errors @child
       end
@@ -26,7 +26,7 @@ module Api
         ::GrantPointService.new(@child).execute!(grant_params)
       end
 
-      render json: ::Api::ChildSerializer.new(@child)
+      render json: ::ChildSerializer.new(@child)
     rescue ActiveRecord::RecordInvalid
       render_errors @child
     end

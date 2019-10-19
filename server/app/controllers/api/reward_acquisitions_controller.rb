@@ -4,7 +4,7 @@ module Api
   class RewardAcquisitionsController < BaseController
     def index
       @acquisitions = RewardAcquisition.all
-      render json: ::Api::RewardAcquisitionSerializer.new(@acquisitions)
+      render json: ::RewardAcquisitionSerializer.new(@acquisitions)
     end
   end
 end

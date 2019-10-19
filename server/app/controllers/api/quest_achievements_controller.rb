@@ -4,7 +4,7 @@ module Api
   class QuestAchievementsController < BaseController
     def index
       @achievements = QuestAchievement.all
-      render json: ::Api::QuestAchievementSerializer.new(@achievements)
+      render json: ::QuestAchievementSerializer.new(@achievements)
     end
   end
 end

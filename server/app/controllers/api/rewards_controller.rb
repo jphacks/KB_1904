@@ -6,17 +6,17 @@ module Api
 
     def index
       @rewards = Reward.all
-      render json: ::Api::RewardSerializer.new(@rewards)
+      render json: ::RewardSerializer.new(@rewards)
     end
 
     def show
-      render json: ::Api::RewardSerializer.new(@reward)
+      render json: ::RewardSerializer.new(@reward)
     end
 
     def create
       @reward = Reward.build(reward_params)
       if @reward.save
-        render json: ::Api::RewardSerializer.new(@reward)
+        render json: ::RewardSerializer.new(@reward)
       else
         render_errors @reward
       end
@@ -24,7 +24,7 @@ module Api
 
     def update
       if @reward.update(reward_params)
-        render json: ::Api::RewardSerializer.new(@reward)
+        render json: ::RewardSerializer.new(@reward)
       else
         render_errors @reward
       end
@@ -53,7 +53,7 @@ module Api
         ::ApproveRewardService.new.execute!(@reward)
       end
 
-      render json: ::Api::RewardSerializer.new(@reward)
+      render json: ::RewardSerializer.new(@reward)
     rescue ActiveRecord::RecordInvalid
       render_errors @reward
     end

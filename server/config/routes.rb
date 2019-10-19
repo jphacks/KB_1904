@@ -16,4 +16,9 @@ Rails.application.routes.draw do
     resources :reward_acquisitions, only: :index
     resources :point_grants, only: :index
   end
+
+  namespace :alexa do
+    get 'quests', to: 'quests#index'
+    get 'rewards', to: 'rewards#index'
+  end
 end
