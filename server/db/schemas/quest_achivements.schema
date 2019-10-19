@@ -2,7 +2,7 @@ create_table :quest_achivements, force: :cascade do |t|
   t.references :parent
   t.references :child
 
-  t.string  :quest_id, null: false
+  t.bigint  :quest_id, null: false
   t.string  :title, null: false
   t.integer :point, null: false, default: 0
 

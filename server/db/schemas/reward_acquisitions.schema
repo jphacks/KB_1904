@@ -2,7 +2,7 @@ create_table :reward_acquisitions, force: :cascade do |t|
   t.references :parent
   t.references :child
 
-  t.string  :reward_id, null: false
+  t.bigint  :reward_id, null: false
   t.string  :name, null: false
   t.integer :point, null: false, default: 0
 

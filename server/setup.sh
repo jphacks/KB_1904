@@ -14,3 +14,4 @@ rails db:create
 # Install pgcrypto to generate uuid
 # psql -h localhost -d development -U postgres -c 'create extension "pgcrypto";'
 ridgepole -c config/database.yml -E development --apply -f db/Schemafile --allow-pk-change
+rails db:seed
