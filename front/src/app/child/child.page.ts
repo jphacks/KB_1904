@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-child',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./child.page.scss'],
 })
 export class ChildPage implements OnInit {
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit() {}
+
+  pushOtherPage(to: 'quest' | 'reward') {
+    this.router.navigateByUrl(`/child/${to}`);
+  }
 }

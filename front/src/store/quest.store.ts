@@ -1,6 +1,5 @@
 import { Action, createSelector, createFeatureSelector } from '@ngrx/store';
 import { Quest } from 'src/models/quest';
-import { stat } from 'fs';
 
 export const SET_QUESTS = '[Quest] SetQuests';
 export const SET_QUEST = '[Quest] SetQuest';

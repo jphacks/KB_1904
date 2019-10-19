@@ -9,13 +9,13 @@
     </div>
   </div>
   <div class="cards-wrapper black-font">
-    <ion-card class="card-wrapper">
+    <ion-card (click)="pushOtherPage('quest')" class="card-wrapper">
       <ion-card-title class="card-title quest-cards">クエストを見る</ion-card-title>
       <ion-card-content class="card-content">
         <img class="title-image" src="../../assets/icon/bulletin_board.svg" height="80px" />
       </ion-card-content>
     </ion-card>
-    <ion-card class="card-wrapper">
+    <ion-card (click)="pushOtherPage('reward')" class="card-wrapper">
       <ion-card-title class="card-title reward-cards">ごほうびを見る</ion-card-title>
       <ion-card-content class="card-content">
         <img class="title-image" src="../../assets/icon/treasure_chest.svg" height="80px" />
