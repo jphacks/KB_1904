@@ -15,6 +15,5 @@ export class ChildDetailPage implements OnInit {
 
   ngOnInit() {
     this.pageName = this.router.url.split('/').pop() as 'quest' | 'reward';
-    console.log(this.pageName);
   }
 }

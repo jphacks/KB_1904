@@ -1,5 +1,5 @@
 <ion-content class="child-detail-page-content">
-  <app-button-wrapper></app-button-wrapper>
+  <app-button-wrapper [showBack]="true"></app-button-wrapper>
   <div class="status-wrapper black-font">
     <div class="child-name">ほげのちゃん</div>
     <div class="child-point">
@@ -10,19 +10,19 @@
   </div>
   <div class="content-title-wrapper">
     <img class="content-title-image" src="../../../assets/icon/bulletin_board.svg" height="80px" />
-    <div class="content-title black-font">どんなクエストがあるか見てみよう！</div>
+    <div class="content-title black-font">どんな{{pageName === 'quest' ? 'クエスト' : 'ごほうび'}}があるか見てみよう！</div>
   </div>
-  <ng-container class="list-wrapper" *ngIf="false; else rewardList">
+  <ng-container class="list-wrapper" *ngIf="pageName === 'quest'; else rewardList">
     <div class="emergency-list">
       <div class="emergency-title black-font">おいそぎクエスト</div>
       <ion-list class="quest-list">
-        <app-child-item></app-child-item>
+        <app-child-item [showPeriod]="true"></app-child-item>
       </ion-list>
     </div>
     <div class="daily-list">
       <div class="daily-title black-font">まいにちクエスト</div>
       <ion-list class="quest-list">
-        <app-child-item></app-child-item>
+        <app-child-item [showPeriod]="true"></app-child-item>
       </ion-list>
     </div>
   </ng-container>
@@ -30,13 +30,13 @@
     <div class="reward-list">
       <div class="reward-title black-font">おねだりできるごほうび</div>
       <ion-list class="quest-list">
-        <app-child-item></app-child-item>
+        <app-child-item [showPeriod]="false"></app-child-item>
       </ion-list>
     </div>
     <div class="yet-reward-list">
       <div class="yet-reward-title black-font">まだおねだりできないごほうび</div>
       <ion-list class="quest-list">
-        <app-child-item></app-child-item>
+        <app-child-item [showPeriod]="false"></app-child-item>
       </ion-list>
     </div>
   </ng-template>

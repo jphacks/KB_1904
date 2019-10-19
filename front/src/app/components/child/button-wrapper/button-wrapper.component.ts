@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-button-wrapper',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./button-wrapper.component.scss'],
 })
 export class ButtonWrapperComponent implements OnInit {
-
+  @Input() showHint = false;
+  @Input() showBack: boolean;
   constructor() { }
 
   ngOnInit() {}

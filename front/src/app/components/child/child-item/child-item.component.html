@@ -6,7 +6,7 @@
     <ion-card-title class="child-item-card-title">nyan</ion-card-title>
     <ion-card-content class="child-item-card-content">hogehogssssssssssss</ion-card-content>
     <div class="child-item-card-status-wrapper">
-      <div class="child-item-card-status">10月2日まで</div>
+      <div *ngIf="showPeriod" class="child-item-card-status">10月2日まで</div>
       <div class="child-item-card-status black-font">
         <img class="point-jewel-image" src="../../../../assets/icon/jewel.svg" width="15px" height="15px" />
         <div class="point-score">800</div>

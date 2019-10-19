@@ -1,4 +1,4 @@
 <div class="child-button-wrapper">
-  <app-hint-button class="child-hint-button"></app-hint-button>
-  <app-back-button class="child-back-button"></app-back-button>
+  <app-hint-button class="child-hint-button" *ngIf="showHint"></app-hint-button>
+  <app-back-button class="child-back-button" *ngIf="showBack"></app-back-button>
 </div>
