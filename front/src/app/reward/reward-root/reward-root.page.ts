@@ -28,4 +28,7 @@ export class RewardRootPage implements OnInit {
   navigateToDetail(id: number) {
     this.router.navigateByUrl(`tabs/reward/${id}`);
   }
+  click() {
+    this.router.navigateByUrl(`tabs/reward/create`);
+  }
 }

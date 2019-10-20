@@ -15,6 +15,10 @@ const routes: Routes = [
     component: RewardRootPage,
   },
   {
+    path: 'create',
+    loadChildren: () => import('../../reward-edit/reward-edit.module').then(m => m.RewardEditPageModule),
+  },
+  {
     path: ':id',
     loadChildren: () => import('../reward-detail/reward-detail.module').then(m => m.RewardDetailPageModule),
   },
