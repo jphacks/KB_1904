@@ -1,12 +1,8 @@
 <ion-card (click)="openModal()" class="child-item-card">
-  <div *ngIf="!hoge; else nyan" class="child-item-image">
+  <div class="child-item-image">
     <img  src="../../../../assets/icon/bulletin_board.svg"/>
   </div>
-  <ng-template #nyan>
-    <div class="child-item-image">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/61l-q%2BMon3L._SX569_.jpg" width="80px"/>
-    </div>
-  </ng-template>
+
   <div class="child-item-card-content-wrapper">
     <ion-card-title class="child-item-card-title">{{value.title}}</ion-card-title>
     <ion-card-content class="child-item-card-content">{{value.description}}</ion-card-content>
