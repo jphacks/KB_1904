@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthApi } from '../../../api';
 import {Child, Parent, Quest} from '../../../models';
 import {DatePipe} from '@angular/common';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-child-modal',
@@ -13,6 +14,7 @@ export class ChildModalPage implements OnInit {
   constructor(
     private authSvc: AuthApi,
     private datePipe: DatePipe,
+    private modalCtrl: ModalController,
   ) { }
 
   ngOnInit() {
@@ -20,18 +22,6 @@ export class ChildModalPage implements OnInit {
   }
 
   hoge() {
-    this.authSvc.register(
-      {
-        name: 'nyan',
-        email: 'hoge@hoge.com',
-      } as any,
-      {
-        name: 'hoge',
-        sex: 'male'
-      } as any,
-      'hogenyan'
-    ).subscribe(_ => {
-      console.log(_);
-    });
+    this.modalCtrl.dismiss();
   }
 }

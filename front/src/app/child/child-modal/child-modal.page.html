@@ -5,11 +5,11 @@
 <ion-content [scrollY]="false" class="child-modal-content">
   <div class="child-modal-quest">
     <div class="child-modal-image">
-      <img src="../../../assets/icon/bulletin_board.svg"/>
+      <img class="hearvy-image" src="../../../assets/icon/bulletin_board.svg"/>
     </div>
     <div class="child-modal-quest-content">
       <div>{{quest.description}}</div>
-      <div class="child-modal-quest-period">{{ datePipe.transform(quest.period, 'MM月dd日')}}まで</div>
+      <div *ngIf="!!quest.period" class="child-modal-quest-period">{{ datePipe.transform(quest.period, 'MM月dd日')}}まで</div>
     </div>
   </div>
   <div class="child-modal-message-wrapper">

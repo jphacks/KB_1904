@@ -21,8 +21,13 @@
     .child-modal-image {
       display: flex;
       align-items: center;
-      width: 80px;
+      min-width: 80px !important;
+      width: 80px !important;
       margin-right: 8px;
+      .hearvy-image {
+        min-width: 80px !important;
+        width: 80px !important;
+      }
     }
     .child-modal-quest-content {
       font-size: 12px;
