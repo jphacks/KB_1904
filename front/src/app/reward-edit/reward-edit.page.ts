@@ -50,4 +50,7 @@ export class RewardEditPage implements OnInit {
       }
     );
   }
+  hoge() {
+    this.router.navigateByUrl(`tabs/reward`);
+  }
 }
