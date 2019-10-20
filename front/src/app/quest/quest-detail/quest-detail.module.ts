@@ -6,21 +6,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { QuestDetailPage } from './quest-detail.page';
+import { QuestEditPage } from 'src/app/quest-edit/quest-edit.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: QuestDetailPage
-  }
+    component: QuestDetailPage,
+  },
+  {
+    path: 'edit',
+    component: QuestEditPage,
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [QuestDetailPage]
+  imports: [CommonModule, FormsModule, IonicModule, RouterModule.forChild(routes)],
+  declarations: [QuestDetailPage],
 })
 export class QuestDetailPageModule {}
