@@ -32,6 +32,7 @@ export class QuestEditPage implements OnInit {
   }
   submit(form: FormGroup, event) {
     const quest = {
+      id: null,
       image: form.value.image,
       title: form.value.title,
       description: form.value.description,
@@ -39,6 +40,7 @@ export class QuestEditPage implements OnInit {
       questType: form.value.questType,
       status: form.value.status,
       datetime: form.value.datetime,
+      createdAt: null,
     } as Quest;
     this.questApi.create(quest).subscribe(
       () => {

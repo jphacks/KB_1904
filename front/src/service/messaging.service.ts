@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: 'jphacks-f77ac',
   storageBucket: 'jphacks-f77ac.appspot.com',
   messagingSenderId: '327481213317',
-  appId: '1:327481213317:web:933b1cbc33dfd74f8384ec'
+  appId: '1:327481213317:web:933b1cbc33dfd74f8384ec',
 };
 
 @Injectable({
@@ -35,14 +35,14 @@ export class MessagingService {
         console.log('Notification permission granted.');
         return this.messaging.getToken();
       })
-      .then((token) => localStorage.setItem('device-token', token))
-      .catch((err) => {
+      .then(token => localStorage.setItem('device-token', token))
+      .catch(err => {
         console.log('Unable to get permission to notify.', err);
       });
   }
 
   receiveMessage() {
-    this.messaging.onMessage((payload) => {
+    this.messaging.onMessage(payload => {
       console.log('Message received. ', payload);
       this.currentMessage.next(payload);
     });
