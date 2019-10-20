@@ -19,6 +19,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from '../store';
 import { ServiceModule } from '../service/services.module';
 import { IonicStorageModule } from '@ionic/storage';
+
+import { MessagingService } from '../service/messaging.service';
 import * as firebase from 'firebase';
 
 @NgModule({
@@ -39,7 +41,8 @@ import * as firebase from 'firebase';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    MessagingService
   ],
   bootstrap: [AppComponent],
 })

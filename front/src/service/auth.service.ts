@@ -19,8 +19,9 @@ export class AuthService {
     private store: Store<AppState>,
     private api: AuthApi,
   ) {}
-  register(_parent: Parent, _child: Child, _password: string): Observable<string> {
-    return this.api.register(_parent, _child, _password);
+  register(_parent: Parent, _child: Child, _password: string, isParent: boolean): Observable<string> {
+    const deviceToken = localStorage.getItem('device-token');
+    return this.api.register(_parent, _child, _password, deviceToken, isParent);
   }
   login(_email: string, _password: string): Observable<string> {
     return this.api.login(_email, _password);

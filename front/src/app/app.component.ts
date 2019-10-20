@@ -12,8 +12,7 @@ import { selectToken } from 'src/store/jwt-token.store';
 import { logging } from 'protractor';
 import { AuthService } from 'src/service/auth.service';
 
-import * as firebase from 'firebase/app';
-import 'firebase/messaging';
+import { MessagingService } from '../service/messaging.service';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +22,7 @@ import 'firebase/messaging';
 export class AppComponent implements OnInit {
 
   ready$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  messaging = firebase.messaging();
-  //   currentMessage = new BehaviorSubject(null);
+  message;
 
   constructor(
     private platform: Platform,
@@ -35,43 +33,14 @@ export class AppComponent implements OnInit {
     private router: Router,
     private localStrage: Storage,
     private store: Store<AppState>,
+    private msgService: MessagingService,
     private authSvc: AuthService
-  ) {
-    this.initializeApp();
-  }
+  ) {}
 
   ngOnInit() {
-    this.getPermission();
-    this.receiveMessage();
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.store.select(state => state);
-      this.initializeRouting();
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-    this.messaging.usePublicVapidKey('BLYilK58bHL_wUTL3oYrgPiuGwv-TqvIKY6wOPHbbid1as-eHTAnVVXmM2k_b8UJwsQmqphdnoo5L_MECdYX99k');
-  }
-
-  getPermission() {
-    this.messaging
-      .requestPermission()
-      .then(() => {
-        console.log('Notification permission granted.');
-        return this.messaging.getToken();
-      })
-      .catch((err) => {
-        console.log('Unable to get permission to notify.', err);
-      });
-  }
-
-  receiveMessage() {
-    this.messaging.onMessage((payload) => {
-      console.log('Message received. ', payload);
-//       this.currentMessage.next(payload);
-    });
+    this.msgService.getPermission();
+    this.msgService.receiveMessage();
+    this.message = this.msgService.currentMessage;
   }
 
   async initializeRouting() {
