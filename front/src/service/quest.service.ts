@@ -22,7 +22,9 @@ export class QuestService {
     );
   }
   get(id: number): Observable<Quest> {
-    return this.api.get(id).pipe(tap(t => this.store.dispatch(new SetQuest(t))));
+    return this.api.get(id).pipe(
+      map((t: any) => t.data.attributes)
+    );
   }
   update(quest: any): Observable<Quest> {
     return this.api.get(quest).pipe(tap(t => this.store.dispatch(new SetQuest(t))));

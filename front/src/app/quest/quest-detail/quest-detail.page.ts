@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../store';
 import { Store, select } from '@ngrx/store';
 import { QuestService } from '../../../service';
 import { Quest } from '../../../models';
 import { selectQuest } from '../../../store/quest.store';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quest-detail',
@@ -13,30 +13,30 @@ import { selectQuest } from '../../../store/quest.store';
   styleUrls: ['./quest-detail.page.scss'],
 })
 export class QuestDetailPage implements OnInit {
-  questId: number;
+  id: number;
   quest$: Observable<Quest>;
 
   constructor(
     private questSvc: QuestService,
-    public navParams: NavParams,
+    private route: ActivatedRoute,
     private store: Store<AppState>,
   ) {
-    this.questId = this.navParams.get('questId');
-    this.quest$ = this.store.pipe(
-      select(selectQuest(this.questId))
-    );
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.quest$ = this.store.pipe(select(selectQuest(this.id)));
   }
 
   ngOnInit() {
-    this.questSvc.get(this.questId).subscribe();
+    this.questSvc.get(this.id).subscribe(_ => {
+      console.log(_);
+    });
   }
 
   approve() {
-    this.questSvc.approve(this.questId).subscribe();
+    this.questSvc.approve(this.id).subscribe();
   }
 
   reject() {
-    const quest = { id: this.questId, status: 'none' };
+    const quest = { id: this.id, status: 'none' };
     this.questSvc.update(quest).subscribe();
   }
 }
