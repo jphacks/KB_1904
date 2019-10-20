@@ -8,25 +8,27 @@
 
 
 unless Parent.count.positive? && Child.count.positive?
-  parent = Parent.create!(name: 'お母さん',
+  @parent = Parent.create!(name: 'お母さん',
                           email: 'mother@example.com',
                           password: 'password',
                           password_confirmation: 'password')
 
-  child = Child.create!(parent: parent, name: 'たかし', sex: :male)
+  @child = Child.create!(parent: @parent, name: 'たかし', sex: :male)
 end
 
 unless Quest.count.positive?
-  Quest.create!(
-    parent: parent,
-    child: child,
+  @quest1 = Quest.create!(
+    parent: @parent,
+    child: @child,
     title: '宿題をしよう!',
     description: '毎日しっかり頑張ろう!',
     image: Rails.application.credentials.dig(:image, :study),
     point: 50
   )
 
-  Quest.create!(
+  @quest2 = Quest.create!(
+    parent: @parent,
+    child: @child,
     title: '部屋の掃除をしよう!',
     description: '自分のお部屋はいつもきれいにしようね!',
     quest_type: :daily,
@@ -34,9 +36,9 @@ unless Quest.count.positive?
     point: 100
   )
 
-  quest = Quest.create!(
-    parent: parent,
-    child: child,
+  @quest3 = Quest.create!(
+    parent: @parent,
+    child: @child,
     title: '塾に行こう！',
     description: '毎日頑張ってお勉強しよう!',
     image: Rails.application.credentials.dig(:image, :study),
@@ -44,32 +46,66 @@ unless Quest.count.positive?
     point: 100
   )
 
-  quest.day_of_weeks.create!(
+  @quest3.day_of_weeks.create!(
     [
-      { quest: quest, code: 0 },
-      { quest: quest, code: 2 },
-      { quest: quest, code: 4 }
+      { code: 0 },
+      { code: 2 },
+      { code: 4 }
     ]
   )
 end
 
+unless QuestAchievement.count.positive?
+  QuestAchievement.create!(
+    parent: @parent,
+    child: @child,
+    title: @quest1.title,
+    point: @quest1.point,
+    quest_id: @quest1.id
+  )
+
+  QuestAchievement.create!(
+    parent: @parent,
+    child: @child,
+    title: @quest2.title,
+    point: @quest2.point,
+    quest_id: @quest2.id
+  )
+end
+
 unless Reward.count.positive?
-  Reward.create!(
-    [
-      {
-        parent: parent,
-        child: child,
-        name: 'あめちゃん',
-        description: 'おいしい〜〜',
-        point: 50
-      },
-      {
-        parent: parent,
-        child: child,
-        name: 'ゲーム機',
-        description: 'いつも欲しいって言ってたよね? 頑張ろう!',
-        point: 10_000
-      }
-    ]
+  @reward1 = Reward.create!(
+    parent: @parent,
+    child: @child,
+    name: 'キャンディー',
+    description: 'おいしい〜〜',
+    image: Rails.application.credentials.dig(:image, :candy),
+    point: 50
+  )
+  @reward2 = Reward.create!(
+    parent: @parent,
+    child: @child,
+    name: 'ゲーム機',
+    description: 'いつも欲しいって言ってたよね? 毎日クエスト頑張ろう!',
+    image: Rails.application.credentials.dig(:image, :game),
+    point: 10_000
+  )
+end
+
+unless RewardAcquisition.count.positive?
+  RewardAcquisition.create!(
+    parent: @parent,
+    child: @child,
+    name: @reward1.name,
+    point: @reward1.point,
+    reward_id: @reward1.id
+  )
+
+  RewardAcquisition.create!(
+    parent: @parent,
+    child: @child,
+    name: @reward2.name,
+    point: @reward2.point,
+    reward_id: @reward2.id
   )
 end

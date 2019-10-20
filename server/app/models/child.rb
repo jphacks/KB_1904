@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Child < ApplicationRecord
-  include ImageAttachable
 
   belongs_to :parent
 

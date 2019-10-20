@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Parent < ApplicationRecord
-  include ImageAttachable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
