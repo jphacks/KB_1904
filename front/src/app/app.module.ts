@@ -21,16 +21,6 @@ import { ServiceModule } from '../service/services.module';
 import { IonicStorageModule } from '@ionic/storage';
 import * as firebase from 'firebase';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyC3R9gh0b9nXToEVl4C-A7k7z0wwa1UWQA',
-  authDomain: 'jphacks-f77ac.firebaseapp.com',
-  databaseURL: 'https://jphacks-f77ac.firebaseio.com',
-  projectId: 'jphacks-f77ac',
-  storageBucket: 'jphacks-f77ac.appspot.com',
-  messagingSenderId: '327481213317',
-  appId: '1:327481213317:web:e081a936c594437b8384ec'
-};
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [ChildModalPage],

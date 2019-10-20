@@ -12,7 +12,7 @@ import { selectToken } from 'src/store/jwt-token.store';
 import { logging } from 'protractor';
 import { AuthService } from 'src/service/auth.service';
 
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import 'firebase/messaging';
 
 @Component({
@@ -21,9 +21,10 @@ import 'firebase/messaging';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
   ready$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   messaging = firebase.messaging();
-//   currentMessage = new BehaviorSubject(null);
+  //   currentMessage = new BehaviorSubject(null);
 
   constructor(
     private platform: Platform,
