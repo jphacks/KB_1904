@@ -19,7 +19,7 @@ export class ChildDetailPage implements OnInit {
 
   ngOnInit() {
     this.pageName = this.router.url.split('/').pop() as 'quest' | 'reward';
-    this.authSvc.login('hoge@hoge.com', 'hogenyan').subscribe(_ => console.log(_));
+    this.authSvc.login('mother@example.com', 'hogenyan').subscribe(_ => console.log(_));
     this.userSvc.getChild().subscribe(_ => {
       console.log(_);
     });

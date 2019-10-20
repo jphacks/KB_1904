@@ -13,7 +13,7 @@
   <div class="content">
     <div class="section">達成したクエスト</div>
     <div class="quest-cards">
-      <ng-container *ngIf="(achievedQuests$ | async) as quests">
+      <ng-container *ngIf="(achievededQuests$ | async) as quests">
         <quest-card (click)="navigateToDetail(quest.id)" [quest]="quest" *ngFor="let quest of quests"></quest-card>
       </ng-container>
     </div>

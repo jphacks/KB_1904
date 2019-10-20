@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController, NavParams } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../store';
 import { Store, select } from '@ngrx/store';
@@ -19,7 +18,6 @@ export class RewardRootPage implements OnInit {
 
   constructor(
     private rewardSvc: RewardService,
-    public navParams: NavParams,
     private store: Store<AppState>,
     private router: Router
   ) {
