@@ -7,4 +7,5 @@ class QuestSerializer < BaseSerializer
     :quest_type,
     :status,
     :period
+    :image
 end

@@ -68,7 +68,8 @@ module Api
         :description,
         :point,
         :quest_type,
-        :status
+        :status,
+        :image
       )
     end
 

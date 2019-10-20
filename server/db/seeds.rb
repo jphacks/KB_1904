@@ -13,7 +13,7 @@ unless Parent.count.positive? && Child.count.positive?
                           password: 'password',
                           password_confirmation: 'password')
 
-  child = Child.create!(parent: parent, name: 'ほげの', sex: :female)
+  child = Child.create!(parent: parent, name: 'たかし', sex: :male)
 end
 
 unless Quest.count.positive?
@@ -21,30 +21,25 @@ unless Quest.count.positive?
     parent: parent,
     child: child,
     title: '宿題をしよう!',
-    description: 'しような',
+    description: '毎日しっかり頑張ろう!',
+    image: Rails.application.credentials.dig(:image, :study),
     point: 50
   )
 
-  multiline_desc = <<-EOF
-庭に突如発生した謎の怪物.
-我等の計画を邪魔するものは直ちに排除せよ.
-EOF
-
   Quest.create!(
-    parent: parent,
-    child: child,
-    title: 'やばいやつを倒して！',
-    description: multiline_desc,
-    quest_type: :emergency,
-    period: Time.zone.now,
-    point: 1000
+    title: '部屋の掃除をしよう!',
+    description: '自分のお部屋はいつもきれいにしようね!',
+    quest_type: :daily,
+    image: Rails.application.credentials.dig(:image, :clean),
+    point: 100
   )
 
   quest = Quest.create!(
     parent: parent,
     child: child,
     title: '塾に行こう！',
-    description: 'いけ',
+    description: '毎日頑張ってお勉強しよう!',
+    image: Rails.application.credentials.dig(:image, :study),
     quest_type: :weekly,
     point: 100
   )
@@ -64,15 +59,15 @@ unless Reward.count.positive?
       {
         parent: parent,
         child: child,
-        name: '飴ちゃん',
-        description: '甘い',
+        name: 'あめちゃん',
+        description: 'おいしい〜〜',
         point: 50
       },
       {
         parent: parent,
         child: child,
-        name: '聖剣エクスカリバー',
-        description: 'It slashes all things.',
+        name: 'ゲーム機',
+        description: 'いつも欲しいって言ってたよね? 頑張ろう!',
         point: 10_000
       }
     ]

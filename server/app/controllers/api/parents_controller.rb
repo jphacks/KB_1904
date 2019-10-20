@@ -29,7 +29,8 @@ module Api
         :name,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :image
       )
     end
 

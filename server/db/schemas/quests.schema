@@ -9,6 +9,8 @@ create_table :quests, force: :cascade do |t|
   t.string   :status, null: false, default: :none
   t.datetime :period
 
+  t.string :image
+
   t.timestamps
 
   t.index ["parent_id"], name: "index_parent_id_on_quests"

@@ -7,6 +7,8 @@ create_table :rewards, force: :cascade do |t|
   t.integer :point, null: false
   t.string  :status, null: false, default: :none
 
+  t.string :image
+
   t.timestamps
 
   t.index ["parent_id"], name: "index_parent_id_on_rewards"
