@@ -1,9 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<img src="assets/imgs/login-background.png" class="background">
+<div class="background-cover"></div>
+<div class="content">
+  <img src="assets/imgs/logo.png">
+  <div class="attention">
+    大人の人にアプリを<br>
+    つかえるようにしてもらってね
+  </div>
+  <div class="form-index">
+    <div [class.choosed]="formNumber === 0"></div>
+    <div [class.choosed]="formNumber === 1"></div>
+  </div>
+  <ng-container *ngIf="formNumber === 0">
+    <div class="attention-to-parent">
+      入力内容は2段階あります<br>
+      まず，大人の方の情報を入力してください
+    </div>
+    <form [formGroup]="form" (ngSubmit)="login1(form, $event)" class="login-form">
+      <ion-item>
+        <ion-label>メールアドレス(必須)</ion-label>
+        <ion-textarea formControlName="email" name="email"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>パスワード(必須)</ion-label>
+        <ion-input type="password" formControlName="password" name="password"></ion-input>
+      </ion-item>
+      <div class="form-buttons">
+        <button ion-button type="submit" class="login-button" block>次へ</button>
+        <!-- <div class="login-button" (click)="navigateToLoginPage()" tappable>ログインの方はこちら</div> -->
+      </div>
 
-<ion-content>
-
-</ion-content>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="formNumber === 1">
+    <div class="attentioin-to-parent">
+      最後にこのスマートフォンは誰が持ちますか？
+    </div>
+    <div class="login-button" (click)="login2(true)">大人が持つ</div>
+    <div class="login-button secondary" (click)="login2(false)">子どもが持つ</div>
+  </ng-container>
+</div>
