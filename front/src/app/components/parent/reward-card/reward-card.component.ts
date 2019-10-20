@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Reward } from '../../../../models';
 
 @Component({
   selector: 'reward-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reward-card.component.scss'],
 })
 export class RewardCardComponent implements OnInit {
+  @Input()
+  reward: Reward;
+
   constructor() {}
 
   ngOnInit() {}

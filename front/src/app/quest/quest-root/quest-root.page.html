@@ -13,15 +13,17 @@
   <div class="content">
     <div class="section">達成したクエスト</div>
     <div class="quest-cards">
-      <quest-card (click)="navigateToDetail()"></quest-card>
-      <quest-card (click)="navigateToDetail()"></quest-card>
+      <ng-container *ngIf="(achievededQuests$ | async) as quests">
+        <quest-card (click)="navigateToDetail(quest.id)" [quest]="quest" *ngFor="let quest of quests"></quest-card>
+      </ng-container>
     </div>
   </div>
   <div class="content">
     <div class="section">未達成のクエスト</div>
     <div class="quest-cards">
-      <quest-card (click)="navigateToDetail()"></quest-card>
-      <quest-card (click)="navigateToDetail()"></quest-card>
+      <ng-container *ngIf="(otherQuests$ | async) as quests">
+        <quest-card (click)="navigateToDetail(quest.id)" [quest]="quest" *ngFor="let quest of quests"></quest-card>
+      </ng-container>
     </div>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

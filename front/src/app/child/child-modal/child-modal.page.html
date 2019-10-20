@@ -1,5 +1,5 @@
 <ion-header class="child-modal-header black-font">
-  タイトル❤️
+  {{quest.title}}
 </ion-header>
 
 <ion-content [scrollY]="false" class="child-modal-content">
@@ -8,8 +8,8 @@
       <img src="../../../assets/icon/bulletin_board.svg"/>
     </div>
     <div class="child-modal-quest-content">
-      <div>ほげホゲホゲホゲホゲホゲホゲ</div>
-      <div class="child-modal-quest-period">10月8日まで</div>
+      <div>{{quest.description}}</div>
+      <div class="child-modal-quest-period">{{ datePipe.transform(quest.period, 'MM月dd日')}}まで</div>
     </div>
   </div>
   <div class="child-modal-message-wrapper">
@@ -17,7 +17,7 @@
       このクエストをできれば
       <div class="point-wrapper">
         <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
-        {{'800'}}
+        {{quest.point}}
       </div>
       ゲット！
     </div>

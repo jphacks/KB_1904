@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthApi } from '../../../api';
-import { Child, Parent } from '../../../models';
+import {Child, Parent, Quest} from '../../../models';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-child-modal',
@@ -8,12 +9,14 @@ import { Child, Parent } from '../../../models';
   styleUrls: ['./child-modal.page.scss'],
 })
 export class ChildModalPage implements OnInit {
-
+  quest: Quest;
   constructor(
-    private authSvc: AuthApi
+    private authSvc: AuthApi,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit() {
+    console.log(this.quest);
   }
 
   hoge() {

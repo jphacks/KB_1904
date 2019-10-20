@@ -27,7 +27,7 @@ export class RewardApi {
   delete(id: number) {
     this.http.delete(`${this.url}/${id}`);
   }
-  approve(id: number) {
-    this.http.put<Reward>(`${this.url}/${id}/approve`, {});
+  approve(id: number): Observable<Reward> {
+    return this.http.put<Reward>(`${this.url}/${id}/approve`, {});
   }
 }

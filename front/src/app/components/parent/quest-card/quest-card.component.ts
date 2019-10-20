@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Quest } from '../../../../models';
 
 @Component({
   selector: 'quest-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quest-card.component.scss'],
 })
 export class QuestCardComponent implements OnInit {
+  @Input()
+  quest: Quest;
+
   constructor() {}
 
   ngOnInit() {}

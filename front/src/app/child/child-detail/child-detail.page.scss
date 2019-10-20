@@ -11,7 +11,7 @@
       display: flex;
       align-items: center;
       border-bottom: 1px solid color($app-colors, gray, dark);
-      width: 100px;
+      width: 140px;
       margin-right: 20px;
     }
 
@@ -40,5 +40,8 @@
     font-size: 16px;
     margin-bottom: 8px;
     color: color($child-colors, primary);
+  }
+  .margin-toru {
+    margin: 8px 0;
   }
 }

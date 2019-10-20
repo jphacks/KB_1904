@@ -1,10 +1,10 @@
 <ion-content class="child-detail-page-content">
   <app-button-wrapper [showBack]="true"></app-button-wrapper>
   <div class="status-wrapper black-font">
-    <div class="child-name">ほげのちゃん</div>
+    <div class="child-name">{{child?.name}}</div>
     <div class="child-point">
       <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
-      <div class="point-score">800</div>
+      <div class="point-score">{{child?.point}}</div>
       <div class="point-text">ポイント</div>
     </div>
   </div>
@@ -13,18 +13,28 @@
     <div class="content-title black-font">どんな{{pageName === 'quest' ? 'クエスト' : 'ごほうび'}}があるか見てみよう！</div>
   </div>
   <ng-container class="list-wrapper" *ngIf="pageName === 'quest'; else rewardList">
-    <div class="emergency-list">
-      <div class="emergency-title black-font">おいそぎクエスト</div>
-      <ion-list class="quest-list">
-        <app-child-item [showPeriod]="true"></app-child-item>
-      </ion-list>
-    </div>
-    <div class="daily-list">
-      <div class="daily-title black-font">まいにちクエスト</div>
-      <ion-list class="quest-list">
-        <app-child-item [showPeriod]="true"></app-child-item>
-      </ion-list>
-    </div>
+    <ng-container *ngIf="(quests$ | async) as quests">
+      <div class="emergency-list">
+        <div class="emergency-title black-font">おいそぎクエスト</div>
+        <ion-list class="quest-list">
+          <ng-container *ngFor="let quest of quests">
+            <div class *ngIf="quest.questType === 'emergency'">
+              <app-child-item [quest]="quest" [showPeriod]="true"></app-child-item>
+            </div>
+          </ng-container>
+        </ion-list>
+      </div>
+      <div class="daily-list">
+        <div class="daily-title black-font">まいにちクエスト</div>
+        <ion-list class="quest-list">
+          <ng-container *ngFor="let quest of quests">
+            <div class="margin-toru" *ngIf="quest.questType !== 'emergency'">
+              <app-child-item [quest]="quest" [showPeriod]="true"></app-child-item>
+            </div>
+          </ng-container>
+        </ion-list>
+      </div>
+    </ng-container>
   </ng-container>
   <ng-template #rewardList>
     <div class="reward-list">
