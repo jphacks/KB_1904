@@ -5,5 +5,6 @@ class QuestSerializer < BaseSerializer
     :description,
     :point,
     :quest_type,
-    :status
+    :status,
+    :period
 end

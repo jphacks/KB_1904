@@ -30,13 +30,23 @@ unless Quest.count.positive?
 我等の計画を邪魔するものは直ちに排除せよ.
 EOF
 
-  quest = Quest.create!(
+  Quest.create!(
     parent: parent,
     child: child,
     title: 'やばいやつを倒して！',
     description: multiline_desc,
-    quest_type: :weekly,
+    quest_type: :emergency,
+    period: Time.zone.now,
     point: 1000
+  )
+
+  quest = Quest.create!(
+    parent: parent,
+    child: child,
+    title: '塾に行こう！',
+    description: 'いけ',
+    quest_type: :weekly,
+    point: 100
   )
 
   quest.day_of_weeks.create!(
