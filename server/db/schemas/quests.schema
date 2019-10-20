@@ -2,11 +2,12 @@ create_table :quests, force: :cascade do |t|
   t.references :parent
   t.references :child
 
-  t.string  :title, null: false
-  t.text    :description, null: false
-  t.integer :point, null: false
-  t.string  :quest_type, null: false, default: :daily
-  t.string  :status, null: false, default: :none
+  t.string   :title, null: false
+  t.text     :description, null: false
+  t.integer  :point, null: false
+  t.string   :quest_type, null: false, default: :daily
+  t.string   :status, null: false, default: :none
+  t.datetime :period
 
   t.timestamps
 
