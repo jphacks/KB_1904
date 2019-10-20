@@ -10,49 +10,46 @@
 </ion-header>
 
 <ion-content>
-  <div class="content">
-    <div class="thumbnail"></div>
-    <ng-container *ngIf="true">
-      <div class="trophy">
-        <ion-icon name="trophy"></ion-icon>
-        <div class="trophy-text">
-          <div class="trophy-message">ほげのちゃんが達成！</div>
-          <div class="trophy-datetime">2019/10/17 8:00</div>
+  <ng-container *ngIf="(quest$ | async) as quest">
+    <div class="content">
+      <div class="thumbnail"></div>
+      <ng-container *ngIf="true">
+        <div class="trophy">
+          <ion-icon name="trophy"></ion-icon>
+          <div class="trophy-text">
+            <div class="trophy-message">ほげのちゃんが達成！</div>
+            <div class="trophy-datetime">{{ quest.createdAt }}</div>
+          </div>
+        </div>
+        <div class="trophy-buttons">
+          <div class="trophy-button" tappable (click)="approve()">
+            達成確認！
+          </div>
+          <div class="trophy-button-cancel" tappable (click)="reject()">
+            もう一回！
+          </div>
+        </div>
+      </ng-container>
+      <div class="title">
+        {{ quest.title }}
+      </div>
+      <div class="info">
+        <div class="info-point">
+          <img src="assets/icon/jewel.svg">
+          {{ quest.point }}
+        </div>
+        <div class="info-datetime">
+          {{ date.setDate(quest.createdAt.getDate() + 1) }} 8:00まで
         </div>
       </div>
-      <div class="trophy-buttons">
-        <div class="trophy-button" tappable>
-          達成確認！
-        </div>
-        <div class="trophy-button-cancel">
-          もう一回！
-        </div>
-      </div>
-    </ng-container>
-    <div class="title">
-      草刈り求む！
-    </div>
-    <div class="info">
-      <div class="info-point">
-        <img src="assets/icon/jewel.svg">
-        800
-      </div>
-      <div class="info-datetime">
-        2019/10/17 8:00まで
+      <div class="description">
+        {{ quest.description }}
       </div>
     </div>
-    <div class="description">
-      説明とかホゲホゲ
-      説明とかホゲホゲ
-      説明とかホゲホゲ
-      説明とかホゲホゲ
-      説明とかホゲホゲ
-      説明とかホゲホゲ
-    </div>
-  </div>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="md-create"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="md-create"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  <ng-container>
 </ion-content>

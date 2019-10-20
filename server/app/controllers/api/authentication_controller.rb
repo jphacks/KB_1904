@@ -2,7 +2,7 @@
 
 module Api
   class AuthenticationController < ApplicationController
-    protect_from_forgery except: %i[register login]
+    protect_from_forgery except: %i[login]
 
     def register
       ActiveRecord::Base.transaction do

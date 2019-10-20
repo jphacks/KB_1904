@@ -17,4 +17,7 @@ export class RewardService {
   index(): Observable<Reward[]> {
     return this.api.index().pipe(tap(t => this.store.dispatch(new SetRewards(t))));
   }
+  approve(id: number): Observable<Reward> {
+    return this.api.approve(id).pipe(tap(t => this.store.dispatch(new SetReward(t))));
+  }
 }

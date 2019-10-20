@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 
 import { Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -12,13 +12,18 @@ import { selectToken } from 'src/store/jwt-token.store';
 import { logging } from 'protractor';
 import { AuthService } from 'src/service/auth.service';
 
+import { MessagingService } from '../service/messaging.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   ready$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  message;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -28,19 +33,16 @@ export class AppComponent {
     private router: Router,
     private localStrage: Storage,
     private store: Store<AppState>,
+    private msgService: MessagingService,
     private authSvc: AuthService
-  ) {
-    this.initializeApp();
+  ) {}
+
+  ngOnInit() {
+    this.msgService.getPermission();
+    this.msgService.receiveMessage();
+    this.message = this.msgService.currentMessage;
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.store.select(state => state);
-      this.initializeRouting();
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
   async initializeRouting() {
     const loading = await this.loadingCtrl.create({
       message: 'Loading...',
@@ -53,6 +55,7 @@ export class AppComponent {
     }
     loading.dismiss();
   }
+
   private pushRegisterInitialPage() {
     this.zone.run(() => {
       this.ready$.next(true);

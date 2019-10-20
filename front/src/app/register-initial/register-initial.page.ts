@@ -58,7 +58,7 @@ export class RegisterInitialPage implements OnInit {
     this.formNumber = 2;
   }
   register3(isParent: boolean) {
-    this.authSvc.register(this.parent, this.child, this.password).subscribe(
+    this.authSvc.register(this.parent, this.child, this.password, isParent).subscribe(
       _ => {
         if (isParent) {
           this.router.navigateByUrl('');

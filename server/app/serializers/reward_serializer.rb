@@ -4,5 +4,6 @@ class RewardSerializer < BaseSerializer
   attributes :name,
     :description,
     :point,
-    :status
+    :status,
+    :image
 end

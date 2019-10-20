@@ -20,6 +20,9 @@ import { reducers } from '../store';
 import { ServiceModule } from '../service/services.module';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { MessagingService } from '../service/messaging.service';
+import * as firebase from 'firebase';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [ChildModalPage],
@@ -39,6 +42,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     httpInterceptorProviders,
+    MessagingService
   ],
   bootstrap: [AppComponent],
 })

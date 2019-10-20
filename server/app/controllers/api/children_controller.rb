@@ -44,7 +44,7 @@ module Api
     end
 
     def child_params
-      params.require(:child).permit(:name, :sex)
+      params.require(:child).permit(:name, :sex, :image)
     end
 
     def grant_params

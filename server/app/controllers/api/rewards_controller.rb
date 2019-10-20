@@ -71,7 +71,8 @@ module Api
         :name,
         :description,
         :point,
-        :status
+        :status,
+        :image
       )
     end
 

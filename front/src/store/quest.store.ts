@@ -26,7 +26,15 @@ export const selectQuests = createSelector(
   selectFeature,
   s => Object.keys(s.quests).map(k => s.quests[k])
 );
-export const selectQuest = (id: string) =>
+export const selectAchievedQuests = createSelector(
+  selectFeature,
+  s => Object.keys(s.quests).map(k => s.quests[k]).filter(q => q.status === 'requested')
+);
+export const selectOtherQuests = createSelector(
+  selectFeature,
+  s => Object.keys(s.quests).map(k => s.quests[k]).filter(q => q.status !== 'requested')
+);
+export const selectQuest = (id: number) =>
   createSelector(
     selectFeature,
     s => s.quests[id]
