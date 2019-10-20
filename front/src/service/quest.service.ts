@@ -38,4 +38,10 @@ export class QuestService {
       this.store.dispatch(new SetQuest(t));
     }));
   }
+  update(quest: any): Observable<Quest> {
+    return this.api.get(quest).pipe(tap(t => this.store.dispatch(new SetQuest(t))));
+  }
+  approve(id: number): Observable<Quest> {
+    return this.api.approve(id).pipe(tap(t => this.store.dispatch(new SetQuest(t))));
+  }
 }
