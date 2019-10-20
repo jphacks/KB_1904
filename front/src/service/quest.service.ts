@@ -27,9 +27,15 @@ export class QuestService {
     );
   }
   update(quest: any): Observable<Quest> {
-    return this.api.get(quest).pipe(tap(t => this.store.dispatch(new SetQuest(t))));
+    return this.api.update(quest).pipe(tap(t => {
+      console.log(t);
+      this.store.dispatch(new SetQuest(t));
+    }));
   }
   approve(id: number): Observable<Quest> {
-    return this.api.approve(id).pipe(tap(t => this.store.dispatch(new SetQuest(t))));
+    return this.api.approve(id).pipe(tap(t => {
+      console.log(t);
+      this.store.dispatch(new SetQuest(t));
+    }));
   }
 }

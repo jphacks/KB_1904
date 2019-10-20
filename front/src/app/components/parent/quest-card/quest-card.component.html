@@ -19,7 +19,7 @@
     曜日クエスト
   </div> -->
 </div>
-<div class="info">
+<div class="info" *ngIf="quest.status === 'finished'">
   <ion-icon name="alert"></ion-icon>
   確認が必要です
 </div>

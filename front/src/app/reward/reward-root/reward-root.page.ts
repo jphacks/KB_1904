@@ -21,12 +21,8 @@ export class RewardRootPage implements OnInit {
     private store: Store<AppState>,
     private router: Router
   ) {
-    this.requestedRewards$ = this.store.pipe(
-      select(selectRequestedRewards)
-    );
-    this.otherRewards$ = this.store.pipe(
-      select(selectOtherRewards)
-    );
+    this.requestedRewards$ = this.store.pipe(select(selectRequestedRewards));
+    this.otherRewards$ = this.store.pipe(select(selectOtherRewards));
   }
 
   ngOnInit() {

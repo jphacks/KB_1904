@@ -16,7 +16,7 @@
   <ng-container *ngIf="(quest$ | async) as quest">
     <div class="content">
       <div class="thumbnail"></div>
-      <ng-container *ngIf="true">
+      <ng-container *ngIf="quest.status === 'finished'">
         <div class="trophy">
           <ion-icon name="trophy"></ion-icon>
           <div class="trophy-text">

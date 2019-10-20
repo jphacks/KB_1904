@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChildModalPage } from '../../../child/child-modal/child-modal.page';
 import { ModalController } from '@ionic/angular';
+import {Quest} from '../../../../models';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-child-item',
@@ -8,10 +10,12 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./child-item.component.scss'],
 })
 export class ChildItemComponent implements OnInit {
+  @Input() quest: Quest;
   @Input() showPeriod = false;
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit() {}
@@ -19,7 +23,7 @@ export class ChildItemComponent implements OnInit {
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: ChildModalPage,
-      componentProps: { value: 123 },
+      componentProps: { quest: this.quest },
       showBackdrop: true,
       backdropDismiss: true,
       cssClass: ['child-modal']
