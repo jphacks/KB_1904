@@ -15,22 +15,24 @@
       クエスト達成報告
     </div>
     <div class="reports">
-      <top-report></top-report>
-      <top-report></top-report>
+      <ng-container *ngIf="(achievements$ | async) as achievements">
+        <top-report *ngFor="let achievement of achievements"></top-report>
+      </ng-container>
     </div>
     <div class="section">
       ごほうびおねだり報告
     </div>
     <div class="reports">
-      <top-report></top-report>
-      <top-report></top-report>
+      <ng-container *ngIf="(rewards$ | async) as rewards">
+        <top-report *ngFor="let reward of rewards"></top-report>
+      </ng-container>
     </div>
-    <div class="section">
+    <!--<div class="section">
       クエスト失敗報告
     </div>
     <div class="reports">
       <top-report></top-report>
       <top-report></top-report>
-    </div>
+    </div>-->
   </div>
 </ion-content>

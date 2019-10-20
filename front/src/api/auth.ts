@@ -17,14 +17,14 @@ export class AuthApi {
   key = 'jwt-token';
   constructor(private store: Store<AppState>, private http: HttpClient) {}
 
-  register(_parent: Parent, _child: Child, _password: string, _token: string, isParent: boolean): Observable<string> {
+  register(_parent: Parent, _child: Child, _password: string, _token = '', _isParent = true): Observable<string> {
     return this.http
       .post('register', {
         parent: _parent,
         child: _child,
         password: _password,
         device_token: _token,
-        is_parent: isParent || ''
+        is_parent: _isParent || ''
       })
       .pipe(
         map((_: TokenParam) => {
