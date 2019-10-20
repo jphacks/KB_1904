@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { RewardRootPage } from './reward-root.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { QuestEditPageModule } from 'src/app/quest-edit/quest-edit.module';
 
 const routes: Routes = [
   {

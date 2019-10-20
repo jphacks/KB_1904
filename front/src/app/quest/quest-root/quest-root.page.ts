@@ -38,4 +38,7 @@ export class QuestRootPage implements OnInit {
   navigateToDetail(id: number) {
     this.router.navigateByUrl(`tabs/quest/${id}`);
   }
+  fabClicked() {
+    this.router.navigateByUrl(`tabs/quest/create`);
+  }
 }

@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { QuestRootPage } from './quest-root.page';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { QuestEditPage } from 'src/app/quest-edit/quest-edit.page';
 
 const routes: Routes = [
   {
@@ -15,12 +14,12 @@ const routes: Routes = [
     component: QuestRootPage,
   },
   {
-    path: ':id',
-    loadChildren: () => import('../quest-detail/quest-detail.module').then(m => m.QuestDetailPageModule),
+    path: 'create',
+    loadChildren: () => import('../../quest-edit/quest-edit.module').then(m => m.QuestEditPageModule),
   },
   {
-    path: 'create',
-    component: QuestEditPage,
+    path: ':id',
+    loadChildren: () => import('../quest-detail/quest-detail.module').then(m => m.QuestDetailPageModule),
   },
 ];
 
