@@ -12,13 +12,24 @@ import {DatePipe} from '@angular/common';
 export class ChildItemComponent implements OnInit {
   @Input() value: Quest | Reward;
   @Input() showPeriod = false;
+  hoge = false;
 
   constructor(
     private modalCtrl: ModalController,
     private datePipe: DatePipe,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!this.value) {
+      this.value = {
+        title: 'Nintendo Switch',
+        description: '欲しいやろ？',
+        point: 10000,
+        period: new Date()
+      } as Quest;
+      this.hoge = true;
+    }
+  }
 
   async openModal() {
     const modal = await this.modalCtrl.create({

@@ -9,6 +9,7 @@ import { selectQuests} from '../../../store/quest.store';
 import {AppState} from '../../../store';
 import {Quest, Reward} from 'src/models';
 import {Observable} from 'rxjs';
+import { selectRewards } from '../../../store/reward.store';
 
 @Component({
   selector: 'app-child-detail',
@@ -33,9 +34,11 @@ export class ChildDetailPage implements OnInit {
     this.pageName = this.router.url.split('/').pop() as 'quest' | 'reward';
     this.child = ((await this.userSvc.getChild().toPromise()) as any).data.attributes as Child;
     console.log(this.child);
-    this.quests$ = this.store.pipe(select(selectQuests));
-    this.quests$.subscribe(_ => {
-      console.log(_);
-    });
+    if (this.pageName === 'quest') {
+      this.quests$ = this.store.pipe(select(selectQuests));
+      this.quests$.subscribe(_ => {
+        console.log(_);
+      });
+    }
   }
 }
