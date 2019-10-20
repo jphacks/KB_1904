@@ -5,5 +5,5 @@ export interface Quest {
   point: number;
   questType: 'daily' | 'weekly' | 'emergency';
   status: 'none' | 'finished' | 'approved';
-  createdAt: Date;
+  period: Date;
 }

@@ -6,6 +6,7 @@ import { QuestService } from '../../../service';
 import { Quest } from '../../../models';
 import { selectQuest } from '../../../store/quest.store';
 import { ActivatedRoute } from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-quest-detail',
@@ -20,6 +21,7 @@ export class QuestDetailPage implements OnInit {
     private questSvc: QuestService,
     private route: ActivatedRoute,
     private store: Store<AppState>,
+    private datePipe: DatePipe,
   ) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.quest$ = this.store.pipe(select(selectQuest(this.id)));
@@ -38,5 +40,11 @@ export class QuestDetailPage implements OnInit {
   reject() {
     const quest = { id: this.id, status: 'none' };
     this.questSvc.update(quest).subscribe();
+  }
+
+  addDate(date: Date) {
+    const res = new Date(date);
+    res.setDate(res.getDate() + 1);
+    return res;
   }
 }

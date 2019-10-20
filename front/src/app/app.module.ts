@@ -19,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from '../store';
 import { ServiceModule } from '../service/services.module';
 import { IonicStorageModule } from '@ionic/storage';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     httpInterceptorProviders,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })
