@@ -24,15 +24,15 @@ export const initialState = {
 export const selectFeature = createFeatureSelector<State>('reward');
 export const selectRewards = createSelector(
   selectFeature,
-  s => Object.keys(s.rewards).map(k => s.rewards[k])
+  s => s ? Object.keys(s.rewards).map(k => s.rewards[k]) : []
 );
 export const selectRequestedRewards = createSelector(
   selectFeature,
-  s => Object.keys(s.rewards).map(k => s.rewards[k]).filter(r => r.status === 'requested')
+  s => s ? Object.keys(s.rewards).map(k => s.rewards[k]).filter(r => r.status === 'requested') : []
 );
 export const selectOtherRewards = createSelector(
   selectFeature,
-  s => Object.keys(s.rewards).map(k => s.rewards[k]).filter(r => r.status !== 'requested')
+  s => s ? Object.keys(s.rewards).map(k => s.rewards[k]).filter(r => r.status !== 'requested') : []
 );
 export const selectReward = (id: number) =>
   createSelector(
@@ -43,7 +43,7 @@ export function reducer(state: State = initialState, action: All): State {
   switch (action.type) {
     case SET_REWARDS: {
       const rewards = state.rewards;
-      action.rewards.forEach(reward => (rewards[reward.id] = reward));
+      Array.prototype.forEach.call(action.rewards, reward => (rewards[reward.id] = reward));
       return { ...state, rewards };
     }
     case SET_REWARD: {
