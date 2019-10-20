@@ -18,8 +18,8 @@
         <div class="emergency-title black-font">おいそぎクエスト</div>
         <ion-list class="quest-list">
           <ng-container *ngFor="let quest of quests">
-            <div class *ngIf="quest.questType === 'emergency'">
-              <app-child-item [quest]="quest" [showPeriod]="true"></app-child-item>
+            <div class *ngIf="quest.questType === 'emergency' && quest.status !== 'finished'">
+              <app-child-item [value]="quest" [showPeriod]="true"></app-child-item>
             </div>
           </ng-container>
         </ion-list>
@@ -28,8 +28,8 @@
         <div class="daily-title black-font">まいにちクエスト</div>
         <ion-list class="quest-list">
           <ng-container *ngFor="let quest of quests">
-            <div class="margin-toru" *ngIf="quest.questType !== 'emergency'">
-              <app-child-item [quest]="quest" [showPeriod]="true"></app-child-item>
+            <div class="margin-toru" *ngIf="quest.questType !== 'emergency'  && quest.status !== 'finished'">
+              <app-child-item [value]="quest" [showPeriod]="true"></app-child-item>
             </div>
           </ng-container>
         </ion-list>
@@ -37,17 +37,27 @@
     </ng-container>
   </ng-container>
   <ng-template #rewardList>
-    <div class="reward-list">
-      <div class="reward-title black-font">おねだりできるごほうび</div>
-      <ion-list class="quest-list">
-        <app-child-item [showPeriod]="false"></app-child-item>
-      </ion-list>
-    </div>
-    <div class="yet-reward-list">
-      <div class="yet-reward-title black-font">まだおねだりできないごほうび</div>
-      <ion-list class="quest-list">
-        <app-child-item [showPeriod]="false"></app-child-item>
-      </ion-list>
-    </div>
+    <ng-container *ngIf="(rewards$ | async) as rewards">
+      <div class="reward-list">
+        <div class="reward-title black-font">おねだりできるごほうび</div>
+        <ion-list class="quest-list">
+          <ng-container *ngFor="let reward of rewards">
+            <div class="margin-toru" *ngIf="reward.point >= 1">
+              <app-child-item [value]="reward" [showPeriod]="false"></app-child-item>
+            </div>
+          </ng-container>
+        </ion-list>
+      </div>
+      <div class="yet-reward-list">
+        <div class="yet-reward-title black-font">まだおねだりできないごほうび</div>
+        <ion-list class="quest-list">
+          <ng-container *ngFor="let reward of rewards">
+            <div class="margin-toru" *ngIf="reward.point !== 'emergency'">
+              <app-child-item [value]="reward" [showPeriod]="false"></app-child-item>
+            </div>
+          </ng-container>
+        </ion-list>
+      </div>
+    </ng-container>
   </ng-template>
 </ion-content>

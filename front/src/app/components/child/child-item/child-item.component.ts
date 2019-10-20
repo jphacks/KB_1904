@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChildModalPage } from '../../../child/child-modal/child-modal.page';
 import { ModalController } from '@ionic/angular';
-import {Quest} from '../../../../models';
+import {Quest, Reward} from '../../../../models';
 import {DatePipe} from '@angular/common';
 
 @Component({
@@ -10,7 +10,7 @@ import {DatePipe} from '@angular/common';
   styleUrls: ['./child-item.component.scss'],
 })
 export class ChildItemComponent implements OnInit {
-  @Input() quest: Quest;
+  @Input() value: Quest | Reward;
   @Input() showPeriod = false;
 
   constructor(
@@ -23,7 +23,7 @@ export class ChildItemComponent implements OnInit {
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: ChildModalPage,
-      componentProps: { quest: this.quest },
+      componentProps: { value: this.value },
       showBackdrop: true,
       backdropDismiss: true,
       cssClass: ['child-modal']

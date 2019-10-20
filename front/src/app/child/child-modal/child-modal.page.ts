@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthApi } from '../../../api';
-import {Child, Parent, Quest} from '../../../models';
+import {Child, Parent, Quest, Reward} from '../../../models';
 import {DatePipe} from '@angular/common';
 import {ModalController} from '@ionic/angular';
+import {QuestService, RewardService} from '../../../service';
 
 @Component({
   selector: 'app-child-modal',
@@ -10,18 +11,21 @@ import {ModalController} from '@ionic/angular';
   styleUrls: ['./child-modal.page.scss'],
 })
 export class ChildModalPage implements OnInit {
-  quest: Quest;
+  value: Quest | Reward;
   constructor(
     private authSvc: AuthApi,
     private datePipe: DatePipe,
     private modalCtrl: ModalController,
+    private questSvc: QuestService,
+    private rewardSvc: RewardService,
   ) { }
 
   ngOnInit() {
-    console.log(this.quest);
+    console.log(this.value);
   }
 
-  hoge() {
+  submitQuest() {
+    this.questSvc.update({id: this.value.id, status: 'finished'}).subscribe();
     this.modalCtrl.dismiss();
   }
 }

@@ -3,13 +3,13 @@
     <img src="../../../../assets/icon/bulletin_board.svg"/>
   </div>
   <div class="child-item-card-content-wrapper">
-    <ion-card-title class="child-item-card-title">{{quest.title}}</ion-card-title>
-    <ion-card-content class="child-item-card-content">{{quest.description}}</ion-card-content>
+    <ion-card-title class="child-item-card-title">{{value.title}}</ion-card-title>
+    <ion-card-content class="child-item-card-content">{{value.description}}</ion-card-content>
     <div class="child-item-card-status-wrapper">
-      <div *ngIf="showPeriod" class="child-item-card-status">{{ datePipe.transform(quest.period, 'MM月dd日')}}まで</div>
+      <div *ngIf="showPeriod" class="child-item-card-status">{{ datePipe.transform(value.period, 'MM月dd日')}}まで</div>
       <div class="child-item-card-status black-font">
         <img class="point-jewel-image" src="../../../../assets/icon/jewel.svg" width="15px" height="15px" />
-        <div class="point-score">{{quest.point}}</div>
+        <div class="point-score">{{value.point}}</div>
       </div>
     </div>
   </div>

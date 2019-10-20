@@ -1,5 +1,5 @@
 <ion-header class="child-modal-header black-font">
-  {{quest.title}}
+  {{value.title}}
 </ion-header>
 
 <ion-content [scrollY]="false" class="child-modal-content">
@@ -8,8 +8,8 @@
       <img class="hearvy-image" src="../../../assets/icon/bulletin_board.svg"/>
     </div>
     <div class="child-modal-quest-content">
-      <div>{{quest.description}}</div>
-      <div *ngIf="!!quest.period" class="child-modal-quest-period">{{ datePipe.transform(quest.period, 'MM月dd日')}}まで</div>
+      <div>{{value.description}}</div>
+      <div *ngIf="!!value.period" class="child-modal-quest-period">{{ datePipe.transform(value.period, 'MM月dd日')}}まで</div>
     </div>
   </div>
   <div class="child-modal-message-wrapper">
@@ -17,11 +17,11 @@
       このクエストをできれば
       <div class="point-wrapper">
         <img class="point-jewel-image" src="../../../assets/icon/jewel.svg" width="15px" height="15px" />
-        {{quest.point}}
+        {{value.point}}
       </div>
       ゲット！
     </div>
-    <ion-button (click)="hoge()" class="child-modal-button black-font">
+    <ion-button (click)="submitQuest()" class="child-modal-button black-font">
       できたらここをタップ！
     </ion-button>
   </div>

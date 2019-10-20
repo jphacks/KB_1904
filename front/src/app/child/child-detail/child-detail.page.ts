@@ -7,7 +7,7 @@ import { take } from 'rxjs/operators';
 import {select, Store} from '@ngrx/store';
 import { selectQuests} from '../../../store/quest.store';
 import {AppState} from '../../../store';
-import { Quest } from 'src/models';
+import {Quest, Reward} from 'src/models';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -19,6 +19,7 @@ export class ChildDetailPage implements OnInit {
   pageName: 'quest' | 'reward';
   child: Child;
   quests$: Observable<Array<Quest>>;
+  rewards$: Observable<Array<Reward>>;
   constructor(
     private router: Router,
     private questSvc: QuestService,
