@@ -34,17 +34,7 @@ const routes: Routes = [
           },
         ],
       },
-      {
-        path: '',
-        redirectTo: '/child',
-        pathMatch: 'full',
-      },
     ],
-  },
-  {
-    path: '',
-    redirectTo: '/child',
-    pathMatch: 'full',
   },
 ];
 
