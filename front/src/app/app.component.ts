@@ -20,7 +20,6 @@ import { MessagingService } from '../service/messaging.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
   ready$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   message;
 
@@ -41,6 +40,7 @@ export class AppComponent implements OnInit {
     this.msgService.getPermission();
     this.msgService.receiveMessage();
     this.message = this.msgService.currentMessage;
+    this.initializeRouting();
   }
 
   async initializeRouting() {

@@ -6,4 +6,5 @@ export interface Quest {
   questType: 'daily' | 'weekly' | 'emergency';
   status: 'none' | 'finished' | 'approved';
   createdAt: Date;
+  datetime: string;
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController, NavParams } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../store';
 import { Store, select } from '@ngrx/store';
@@ -17,18 +16,9 @@ export class RewardRootPage implements OnInit {
   requestedRewards$: Observable<Reward[]>;
   otherRewards$: Observable<Reward[]>;
 
-  constructor(
-    private rewardSvc: RewardService,
-    public navParams: NavParams,
-    private store: Store<AppState>,
-    private router: Router
-  ) {
-    this.requestedRewards$ = this.store.pipe(
-      select(selectRequestedRewards)
-    );
-    this.otherRewards$ = this.store.pipe(
-      select(selectOtherRewards)
-    );
+  constructor(private rewardSvc: RewardService, private store: Store<AppState>, private router: Router) {
+    this.requestedRewards$ = this.store.pipe(select(selectRequestedRewards));
+    this.otherRewards$ = this.store.pipe(select(selectOtherRewards));
   }
 
   ngOnInit() {
@@ -37,5 +27,8 @@ export class RewardRootPage implements OnInit {
 
   navigateToDetail(id: number) {
     this.router.navigateByUrl(`tabs/reward/${id}`);
+  }
+  click() {
+    this.router.navigateByUrl(`tabs/reward/create`);
   }
 }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../store';
 import { Store, select } from '@ngrx/store';
 import { RewardService } from '../../../service';
 import { Reward } from '../../../models';
 import { selectReward } from '../../../store/reward.store';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reward-detail',
@@ -16,15 +16,9 @@ export class RewardDetailPage implements OnInit {
   rewardId: number;
   reward$: Observable<Reward>;
 
-  constructor(
-    private rewardSvc: RewardService,
-    public navParams: NavParams,
-    private store: Store<AppState>,
-  ) {
-    this.rewardId = this.navParams.get('rewardId');
-    this.reward$ = this.store.pipe(
-      select(selectReward(this.rewardId))
-    );
+  constructor(private rewardSvc: RewardService, private store: Store<AppState>, private route: ActivatedRoute) {
+    this.rewardId = Number(this.route.snapshot.paramMap.get('id'));
+    this.reward$ = this.store.pipe(select(selectReward(this.rewardId)));
   }
 
   ngOnInit() {

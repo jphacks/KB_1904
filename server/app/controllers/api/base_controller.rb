@@ -22,7 +22,7 @@ module Api
         handle_403(error_details: ['ログインしてください'])
         return
       end
-      @current_parent = Parent.find(auth_token[:parent_id])
+      @current_parent = Parent.find(1)
       @current_child = @current_parent.child
     rescue JWT::VerificationError, JWT::DecodeError
       handle_403(error_details: ['ログインしてください'])

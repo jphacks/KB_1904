@@ -14,6 +14,10 @@ const routes: Routes = [
     component: QuestRootPage,
   },
   {
+    path: 'create',
+    loadChildren: () => import('../../quest-edit/quest-edit.module').then(m => m.QuestEditPageModule),
+  },
+  {
     path: ':id',
     loadChildren: () => import('../quest-detail/quest-detail.module').then(m => m.QuestDetailPageModule),
   },

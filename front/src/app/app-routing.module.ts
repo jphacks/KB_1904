@@ -12,6 +12,7 @@ const routes: Routes = [
   },
   { path: 'register-initial', loadChildren: './register-initial/register-initial.module#RegisterInitialPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'reward-edit', loadChildren: './reward-edit/reward-edit.module#RewardEditPageModule' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],

@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar class="header">
+      <ion-title>
+        <img src="assets/imgs/logo.png" class="header-logo" />
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-icon name="settings" class="header-setting"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div class="content">
+      <form [formGroup]="form" (ngSubmit)="submit(form, $event)" class="edit-form">
+        <ion-item>
+          <ion-label>画像の種類を選ぶ</ion-label>
+          <ion-select formControlName="image" name="image" placeholder="一つを選択してください">
+              <ion-select-option value="https://www.google.com/search?q=%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%82%84%E3%80%80%E3%81%BB%E3%81%86%E3%81%8D&sxsrf=ACYBGNQZSJl4Y6W1TASHdWjRaySk4yW52Q:1571543511865&tbm=isch&source=iu&ictx=1&fir=ntKcC-1WSyalqM%253A%252CIA7yEewyaNxX8M%252C_&vet=1&usg=AI4_-kQIQmmZo9XdpxNbTNowrJOh5fQAZQ&sa=X&ved=2ahUKEwit4Jfm96nlAhW9IqYKHSyFDhwQ9QEwAXoECAgQBg#imgrc=ntKcC-1WSyalqM:">ほうき</ion-select-option>
+              <ion-select-option value="https://2.bp.blogspot.com/-FFQ5vJihLlQ/WCP3o-ejZ9I/AAAAAAAA_cc/d_2bxXJpqi4buPScUk6gmVdDBhPBFc8BwCLcB/s800/bunbougu_note.png">宿題</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>クエスト名(必須)</ion-label>
+            <ion-textarea formControlName="title" name="title"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label>種別(必須)</ion-label>
+            <ion-select formControlName="questType" name="questType" placeholder="一つを選択してください">
+              <ion-select-option value="emergency">お急ぎクエスト</ion-select-option>
+              <ion-select-option value="weekly">曜日クエスト</ion-select-option>
+              <ion-select-option value="date">毎日クエスト</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>ポイント(必須)</ion-label>
+            <ion-input type="number" formControlName="point"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              期日
+            </ion-label>
+            <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label> 説明</ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+          </ion-item>
+          <div class="form-buttons">
+            <button ion-button type="submit" class="login-button" block>新規作成</button>
+            <button ion-button type="submit" class="login-button cancel" block>キャンセル</button>
+          </div>
+      </form>
+    </div>
+  </ion-content>

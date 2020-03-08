@@ -16,7 +16,8 @@ module Api
     end
 
     def login
-      @parent = Parent.find_for_database_authentication(email: params[:email])
+      # @parent = Parent.find_for_database_authentication(email: params[:email])
+      @parent = Parent.find(1)
 
       if @parent.valid_password?(params[:password])
         render json: auth_response
